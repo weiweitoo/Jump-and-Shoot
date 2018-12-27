@@ -2205,6 +2205,9 @@ MonoBehaviour:
   initialGround: 20
   groundWidth: 5
   groundHeight: 0.6
+  minVelocity: 0.8
+  maxVelocity: 1.8
+  groundIndex: 0
 --- !u!1 &1704032850
 GameObject:
   m_ObjectHideFlags: 0

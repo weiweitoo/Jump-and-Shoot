@@ -6,14 +6,14 @@ public class GroundManagerScript : MonoBehaviour {
 
 	public GameObject groundPrefab;
 	public GameObject groundHolder;
-
 	public int initOffSet = -4;
 	public int distanceToNextGround = 8;
 	public int initialGround = 5;
 	public float groundWidth = 3;
 	public float groundHeight = 0.6f;
-
-	int groundIndex = 0;
+	public float minVelocity = 1f;
+	public float maxVelocity = 2f;
+	[ReadOnly] public int groundIndex = 0;
 	
 	void Start () {
 		InitGround();
@@ -41,7 +41,7 @@ public class GroundManagerScript : MonoBehaviour {
 	}
 
 	void SetSpeed(GameObject obj){
-		obj.GetComponent<GroundScript>().velocity = Random.Range(-2.5f,2.5f);
+		obj.GetComponent<GroundScript>().velocity = Random.Range(minVelocity,maxVelocity);
 	}
 
 }

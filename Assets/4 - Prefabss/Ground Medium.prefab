@@ -79,9 +79,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 800
+  minDistanceFromScreen: 1
+  maxDistanceFromScreen: 1
+  wallAdjustment: 0.5
   distance: 2
+  screenWidth: 0
   angle: 0
-  shakeEffect: 0.3
+  shakeEffect: 0
 --- !u!212 &212131268636438680
 SpriteRenderer:
   m_ObjectHideFlags: 1
