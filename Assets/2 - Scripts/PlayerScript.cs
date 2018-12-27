@@ -7,7 +7,6 @@ public class PlayerScript : MonoBehaviour {
 	public float jumpSpeed = 10f;
 	public float fallSpeed = 20f;
 	public float stunTime = 1f;
-	public float screenWidth = 6f;
 	public GameObject playerParent;
 	public bool isDead = false;
 	public GameObject shootEffectPrefab;
@@ -16,9 +15,10 @@ public class PlayerScript : MonoBehaviour {
 	PlayerState currentState;
 	BoxCollider2D boxCollider2D;
 	float previousPosXParent;
+	float ScreenRadiusInWorldX;
 
 	float hueValue;
-
+	public float wallAdjustment;
 	enum PlayerState{
 		Standing,Jumping,Falling
 	}
@@ -32,6 +32,11 @@ public class PlayerScript : MonoBehaviour {
 	void Start(){
 		hueValue = Random.Range(0,1f);
 		ChangeBackgroundColor();
+
+		// Get Screen X
+		// Vector2 topRightCorner = new Vector2(1, 1);
+    	// Vector2 edgeVector = Camera.main.ViewportToWorldPoint(topRightCorner);
+		// ScreenRadiusInWorldX = edgeVector.x;
 	}
 	
 	void Update () {
@@ -50,16 +55,31 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void BounceAtWall(){
-		float radius = screenWidth/2;
-		if(rigidBody2DComponent.position.x < -radius){
-			rigidBody2DComponent.position = new Vector2(-radius,rigidBody2DComponent.position.y);
+		float screenWidth = GameObject.Find("Main Camera").GetComponent<Camera>().ScreenToWorldPoint(new Vector2(Screen.width,0)).x - wallAdjustment;
+		float transformX = rigidBody2DComponent.position.x;
+		// Debug.Log(transformX);
+		// Debug.Log(screenWidth);
+		// Debug.Log("======");
+
+		if(transformX < -screenWidth){
+			rigidBody2DComponent.position = new Vector2(-screenWidth,rigidBody2DComponent.position.y);
 			rigidBody2DComponent.velocity = new Vector2(-rigidBody2DComponent.velocity.x,rigidBody2DComponent.velocity.y);
 		}
 
-		if(rigidBody2DComponent.position.x >= radius){
-			rigidBody2DComponent.position = new Vector2(radius,rigidBody2DComponent.position.y);
+		if(transformX >= screenWidth){
+			rigidBody2DComponent.position = new Vector2(screenWidth,rigidBody2DComponent.position.y);
 			rigidBody2DComponent.velocity = new Vector2(-rigidBody2DComponent.velocity.x,rigidBody2DComponent.velocity.y);
 		}
+
+		// if(rigidBody2DComponent.position.x < -ScreenRadiusInWorldX){
+		// 	rigidBody2DComponent.position = new Vector2(-ScreenRadiusInWorldX,rigidBody2DComponent.position.y);
+		// 	rigidBody2DComponent.velocity = new Vector2(-rigidBody2DComponent.velocity.x,rigidBody2DComponent.velocity.y);
+		// }
+
+		// if(rigidBody2DComponent.position.x >= ScreenRadiusInWorldX){
+		// 	rigidBody2DComponent.position = new Vector2(ScreenRadiusInWorldX,rigidBody2DComponent.position.y);
+		// 	rigidBody2DComponent.velocity = new Vector2(-rigidBody2DComponent.velocity.x,rigidBody2DComponent.velocity.y);
+		// }
 	}
 
 	void GetInput(){
