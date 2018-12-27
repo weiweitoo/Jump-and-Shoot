@@ -78,14 +78,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be599574f44bbc44be52a92fffb91ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 800
   minDistanceFromScreen: 1
   maxDistanceFromScreen: 1
   wallAdjustment: 0.5
+  shakeEffect: 0.4
+  velocity: 800
   distance: 2
   screenWidth: 0
   angle: 0
-  shakeEffect: 0
 --- !u!212 &212131268636438680
 SpriteRenderer:
   m_ObjectHideFlags: 1

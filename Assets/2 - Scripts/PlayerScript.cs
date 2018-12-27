@@ -115,7 +115,6 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	IEnumerator Fall(){
-
 		GameObject shootEffect = Instantiate(shootEffectPrefab,transform.position, Quaternion.identity);
 		shootEffect.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.HSVToRGB(hueValue,0.6f,0.6f);
 
@@ -152,7 +151,9 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void OnCollisionExit2D(Collision2D target){
-		GameObject.Find("GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
-		Destroy(target.gameObject,0.1f);
+		if(currentState == PlayerState.Jumping){
+			GameObject.Find("GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
+			Destroy(target.gameObject,0.1f);
+		}
 	}
 }
