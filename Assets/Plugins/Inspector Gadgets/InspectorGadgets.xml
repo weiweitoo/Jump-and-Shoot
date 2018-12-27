@@ -1,0 +1,1710 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InspectorGadgets</name>
+    </assembly>
+    <members>
+        <member name="T:InspectorGadgets.BaseInspectableAttribute">
+            <summary>[Pro-Only]
+            <see cref="T:InspectorGadgets.Editor`1"/> uses these attributes to add extra elements to the inspector.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.BaseInspectableAttribute.Label">
+            <summary>The label to use as a prefix before the value. If not set, it will use the name of the attributed member.</summary>
+        </member>
+        <member name="P:InspectorGadgets.BaseInspectableAttribute.Tooltip">
+            <summary>The tooltip to use as for the label. If not set, it will use the full name of the attributed member.</summary>
+        </member>
+        <member name="P:InspectorGadgets.BaseInspectableAttribute.LabelContent">
+            <summary>The <see cref="T:UnityEngine.GUIContent"/> used for this inspectable's label, creates from the <see cref="P:InspectorGadgets.BaseInspectableAttribute.Label"/> and <see cref="P:InspectorGadgets.BaseInspectableAttribute.Tooltip"/>.</summary>
+        </member>
+        <member name="P:InspectorGadgets.BaseInspectableAttribute.DisplayIndex">
+            <summary>If set, this inspectable will be drawn at the specified index amongst the regular serialized fields instead of after them.</summary>
+        </member>
+        <member name="P:InspectorGadgets.BaseInspectableAttribute.When">
+            <summary>Determines when this attribute should be active.</summary>
+        </member>
+        <member name="M:InspectorGadgets.BaseInspectableAttribute.CompareTo(InspectorGadgets.BaseInspectableAttribute)">
+            <summary>Compares the <see cref="P:InspectorGadgets.BaseInspectableAttribute.DisplayIndex"/> of this inspectable to the specified 'other'.</summary>
+        </member>
+        <member name="T:InspectorGadgets.ShowPreviewAttribute">
+            <summary>[Pro-Only]
+            Causes the attributed <see cref="T:UnityEngine.Object"/> reference field to draw a preview of the target object.
+            </summary>
+        </member>
+        <member name="F:InspectorGadgets.ShowPreviewAttribute.MaxHeight">
+            <summary>The maximum height (in pixels) at which to draw the preview. Width will be determined using the aspect ratio of the preview.</summary>
+        </member>
+        <member name="M:InspectorGadgets.ShowPreviewAttribute.#ctor(System.Int32)">
+            <summary>Constructs a new <see cref="T:InspectorGadgets.ShowPreviewAttribute"/> with the specified size.</summary>
+        </member>
+        <member name="T:InspectorGadgets.SceneAttribute">
+            <summary>[Pro-Only]
+            Causes the attributed int or string field to be drawn as a dropdown box for selecting scenes from the build settings.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.ColorAttribute">
+            <summary>[Pro-Only]
+            Causes the attributed field to be drawn in a specific color.
+            </summary>
+        </member>
+        <member name="F:InspectorGadgets.ColorAttribute.Color">
+            <summary>The color to use.</summary>
+        </member>
+        <member name="M:InspectorGadgets.ColorAttribute.#ctor(System.Single,System.Single,System.Single)">
+            <summary>Initialises the color with the specified red, green, and blue values.</summary>
+        </member>
+        <member name="T:InspectorGadgets.HasComponentAttribute">
+            <summary>[Pro-Only]
+            When applied to a <see cref="T:UnityEngine.GameObject"/>. field, any object assigned to that field must have a component of the specified type.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.HasComponentAttribute.#ctor(System.Type)">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.HasComponentAttribute"/> to require a component of the specified type.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.ClampValueAttribute">
+            <summary>[Pro-Only]
+            Specifies the range of values allowed by the attributed int or float field.
+            See also: <see cref="T:InspectorGadgets.MinValueAttribute"/> and <see cref="T:InspectorGadgets.MaxValueAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.ClampValueAttribute.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.ClampValueAttribute"/> with the specified range.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.ClampValueAttribute.#ctor(System.Single,System.Single)">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.ClampValueAttribute"/> with the specified range.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.MaxValueAttribute">
+            <summary>[Pro-Only]
+            Specifies the maximum value allowed by the attributed int or float field.
+            See also: <see cref="T:InspectorGadgets.MinValueAttribute"/> and <see cref="T:InspectorGadgets.ClampValueAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.MaxValueAttribute.#ctor">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.MaxValueAttribute"/> with a maximum value of 0.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.MaxValueAttribute.#ctor(System.Int32)">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.MaxValueAttribute"/> with the specified maximum value.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.MaxValueAttribute.#ctor(System.Single)">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.MaxValueAttribute"/> with the specified maximum value.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.MinValueAttribute">
+            <summary>[Pro-Only]
+            Specifies the minimum value allowed by the attributed int or float field.
+            See also: <see cref="T:InspectorGadgets.MaxValueAttribute"/> and <see cref="T:InspectorGadgets.ClampValueAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.MinValueAttribute.#ctor">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.MinValueAttribute"/> with a minimum value of 0.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.MinValueAttribute.#ctor(System.Int32)">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.MinValueAttribute"/> with the specified minimum value.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.MinValueAttribute.#ctor(System.Single)">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.MinValueAttribute"/> with the specified minimum value.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.ValidatorAttribute">
+            <summary>[Pro-Only]
+            Base class for attributes that apply some sort of validation to a field.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.DynamicInspector">
+            <summary>[Experimental]
+            Contains various utilities for dynamically modifying the inspector.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.DynamicInspector.AddInspectorLabel(UnityEngine.Object,System.String,System.Object,System.Single)">
+            <summary>
+            Adds a label to the bottom of the 'context' object's inspector.
+            If an entry with the specified 'name' already exists, it will be updated to display the new 'value' instead.
+            <para></para>
+            This method does nothing outside of the Unity Editor.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.DynamicInspector.AddInspectorButton(UnityEngine.Object,System.String,System.Action,System.Single)">
+            <summary>
+            Adds a button to the bottom of the 'context' object's inspector which triggers the specified 'callback' when clicked.
+            If an entry with the specified 'label' already exists, it will be updated to display the new 'value' instead.
+            <para></para>
+            This method does nothing outside of the Unity Editor.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.DynamicInspector.RemoveInspectorExtra(UnityEngine.Object,System.String)">
+            <summary>
+            Removes an inspector extra with the specified 'name' such as a label or button.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.ScriptyHunterEditor">
+            <summary>[Editor-Only]
+            Custom inspector for MonoBehaviour but not children, so it should only ever get used on missing scripts.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.ScriptyHunterEditor.ScriptProperty">
+            <summary>The target's "m_Script" property.</summary>
+        </member>
+        <member name="P:InspectorGadgets.ScriptyHunterEditor.OtherProperties">
+            <summary>All of the target's properties other than "m_Script".</summary>
+        </member>
+        <member name="M:InspectorGadgets.ScriptyHunterEditor.OnEnable">
+            <summary>
+            Gathers the target's properties. If its script is missing, this method tries to find other similar scripts.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.ScriptyHunterEditor.OnInspectorGUI">
+            <summary>
+            Draws the target's inspector with a message indicating that the script is missing.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.ScriptyHunterEditor.OnDisable">
+            <summary>
+            Indicates to the <see cref="T:InspectorGadgets.ScriptyHunterWindow"/> that the target has been deselected.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.ScriptyHunterWindow">
+            <summary>[Editor-Only]
+            A utility for tracking down and fixing missing script references.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.SerializedPropertyAccessor">
+            <summary>[Editor-Only]
+            A wrapper for <see cref="T:UnityEditor.SerializedProperty"/> that allows you to access the underlying values and fields.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.GetValue(UnityEditor.SerializedProperty,System.Object)">
+            <summary>[Editor-Only] Gets the value of the specified <see cref="T:UnityEditor.SerializedProperty"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.GetValue(UnityEditor.SerializedProperty)">
+            <summary>[Editor-Only] Gets the value of the <see cref="T:UnityEditor.SerializedProperty"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.GetValue``1(UnityEditor.SerializedProperty)">
+            <summary>[Editor-Only] Gets the value of the <see cref="T:UnityEditor.SerializedProperty"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.GetValues``1(UnityEditor.SerializedProperty)">
+            <summary>[Editor-Only] Gets the value of the <see cref="T:UnityEditor.SerializedProperty"/> for each of its target objects.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.SetValue(UnityEditor.SerializedProperty,System.Object,System.Object)">
+            <summary>[Editor-Only] Sets the value of the specified <see cref="T:UnityEditor.SerializedProperty"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.SetValue(UnityEditor.SerializedProperty,System.Object)">
+            <summary>[Editor-Only] Sets the value of the <see cref="T:UnityEditor.SerializedProperty"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.ModifyValues``1(UnityEditor.SerializedProperty,System.Action{``0},System.String)">
+            <summary>
+            Calls the specified 'method' for each of the underlying values of the 'property' (in case it represents
+            multiple selected objects) and records an undo step for any modifications made.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.RecordUndo(UnityEditor.SerializedProperty,System.String)">
+            <summary>
+            Records the state of the specified 'property' so it can be undone.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.OnPropertyChanged(UnityEditor.SerializedProperty)">
+            <summary>
+            Updates the specified 'property' and marks its target objects as dirty so any changes to a prefab will be saved.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.GetPropertyType(System.Type)">
+            <summary>
+            Returns the <see cref="T:UnityEditor.SerializedPropertyType"/> that represents fields of the specified 'type'.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.GetAccessor(UnityEditor.SerializedProperty)">
+            <summary>
+            Gets a <see cref="T:InspectorGadgets.SerializedPropertyAccessor"/> that can be used to access the details of the specified 'property'.
+            </summary>
+        </member>
+        <member name="F:InspectorGadgets.SerializedPropertyAccessor.Parent">
+            <summary>The accessor for the field which this accessor is nested inside.</summary>
+        </member>
+        <member name="F:InspectorGadgets.SerializedPropertyAccessor.Field">
+            <summary>The field wrapped by this accessor.</summary>
+        </member>
+        <member name="F:InspectorGadgets.SerializedPropertyAccessor.FieldType">
+            <summary>The type of the wrapped <see cref="F:InspectorGadgets.SerializedPropertyAccessor.Field"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.#ctor(InspectorGadgets.SerializedPropertyAccessor,System.Reflection.FieldInfo,System.Type)">
+            <summary>Constructs a new <see cref="T:InspectorGadgets.SerializedPropertyAccessor"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.GetValue(System.Object)">
+            <summary>Gets the value of the from the <see cref="F:InspectorGadgets.SerializedPropertyAccessor.Parent"/> (if there is one), then uses it to get the value from the <see cref="F:InspectorGadgets.SerializedPropertyAccessor.Field"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.SetValue(System.Object,System.Object)">
+            <summary>Gets the value of the from the <see cref="F:InspectorGadgets.SerializedPropertyAccessor.Parent"/> (if there is one), then uses it to set the value from the <see cref="F:InspectorGadgets.SerializedPropertyAccessor.Field"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyAccessor.ToString">
+            <summary>Returns a description of this accessor's path.</summary>
+        </member>
+        <member name="T:InspectorGadgets.SerializedPropertyReference">
+            <summary>
+            A serializable reference to a <see cref="T:UnityEditor.SerializedProperty"/>.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.SerializedPropertyReference.TargetObject">
+            <summary>The target object of the referenced <see cref="T:UnityEditor.SerializedProperty"/>.</summary>
+        </member>
+        <member name="P:InspectorGadgets.SerializedPropertyReference.TargetProperty">
+            <summary>The referenced <see cref="T:UnityEditor.SerializedProperty"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyReference.#ctor(UnityEditor.SerializedProperty)">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.SerializedPropertyReference"/> which wraps the specified 'property'.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyReference.IsTarget(UnityEditor.SerializedProperty,UnityEngine.Object[])">
+            <summary>
+            Returns true if the specified property and objects match the targets of this reference.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyReference.TargetExists">
+            <summary>
+            Returns true if the target property and all its target objects still exist.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyReference.GetHeight">
+            <summary>
+            Gets the height needed to draw the target property.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.SerializedPropertyReference.Draw(UnityEngine.Rect)">
+            <summary>
+            Draws the target property within the specified 'rect'.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.PropertyVisualiserWindow">
+            <summary>
+            Base class for editor windows that help visualise the value of a <see cref="T:UnityEditor.SerializedProperty"/>.
+            <para></para>
+            Use <see cref="M:InspectorGadgets.PropertyVisualiserWindow.Visualise``1(UnityEditor.SerializedProperty)"/> to open a window or <see cref="M:InspectorGadgets.PropertyVisualiserWindow.AddVisualiseItem``1(UnityEditor.GenericMenu,UnityEditor.SerializedProperty)"/> to add a menu item that does so.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.PropertyVisualiserWindow.Target">
+            <summary>
+            A serializable reference to the <see cref="T:UnityEditor.SerializedProperty"/> being visualised.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.PropertyVisualiserWindow.WindowName">
+            <summary>
+            The name of the window to use as its title.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.PropertyVisualiserWindow.ValidateTarget">
+            <summary>
+            Called at the start of <see cref="M:InspectorGadgets.PropertyVisualiserWindow.OnGUI"/>. If this method returns false, the window will be closed.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.PropertyVisualiserWindow.OnSceneGUI(UnityEditor.SceneView)">
+            <summary>
+            Override this method to draw gizmos in the scene to visualise the target property.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.PropertyVisualiserWindow.OnEnable">
+            <summary>
+            Called when this window is loaded.
+            Sets the window title and registers the <see cref="M:InspectorGadgets.PropertyVisualiserWindow.DoSceneGUI(UnityEditor.SceneView)"/> callback.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.PropertyVisualiserWindow.OnDisable">
+            <summary>
+            Called when this window is unloaded.
+            Unregisters the <see cref="M:InspectorGadgets.PropertyVisualiserWindow.DoSceneGUI(UnityEditor.SceneView)"/> callback.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.PropertyVisualiserWindow.OnGUI">
+            <summary>
+            Draws this window's GUI by calling <see cref="M:InspectorGadgets.PropertyVisualiserWindow.DrawOptions"/> then drawing the target property.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.PropertyVisualiserWindow.DrawOptions">
+            <summary>
+            Draws a toggle to control whether the visualisations should be relative to the selected object or not.
+            Override this method to add additional options to the window.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.PropertyVisualiserWindow.SelectedTransform">
+            <summary>
+            If the "Relative to Selection" toggle is enabled, this property returns the selected object's <see cref="T:UnityEngine.Transform"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.PropertyVisualiserWindow.AddVisualiseItem``1(UnityEditor.GenericMenu,UnityEditor.SerializedProperty)">
+            <summary>
+            Add a "Visualise" menu item which calls <see cref="M:InspectorGadgets.PropertyVisualiserWindow.Visualise``1(UnityEditor.SerializedProperty)"/>
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.PropertyVisualiserWindow.Visualise``1(UnityEditor.SerializedProperty)">
+            <summary>
+            Opens a <see cref="T:InspectorGadgets.PropertyVisualiserWindow"/> of the specified type and assigns the specified 'property' as its target.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.Vector3VisualiserWindow">
+            <summary>
+            The "Visualise" command in the context menu of a <see cref="T:UnityEngine.Vector3"/> property can be used to open this window
+            which visualises the property's value in the scene.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.Vector3VisualiserWindow.WindowName">
+            <summary>
+            The name of the window to use as its title.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Vector3VisualiserWindow.ValidateTarget">
+            <summary>
+            Returns true if the target property is a <see cref="F:UnityEditor.SerializedPropertyType.Vector3"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Vector3VisualiserWindow.OnSceneGUI(UnityEditor.SceneView)">
+            <summary>
+            Draws gizmos in the scene to visualise the target property.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.Vector2VisualiserWindow">
+            <summary>
+            The "Visualise" command in the context menu of a <see cref="T:UnityEngine.Vector2"/> property can be used to open this window
+            which visualises the property's value in the scene.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.Vector2VisualiserWindow.WindowName">
+            <summary>
+            The name of the window to use as its title.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Vector2VisualiserWindow.ValidateTarget">
+            <summary>
+            Returns true if the target property is a <see cref="F:UnityEditor.SerializedPropertyType.Vector2"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Vector2VisualiserWindow.DrawOptions">
+            <summary>
+            Draws the extra options of this <see cref="T:InspectorGadgets.PropertyVisualiserWindow"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Vector2VisualiserWindow.OnSceneGUI(UnityEditor.SceneView)">
+            <summary>
+            Draws gizmos in the scene to visualise the target property.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.FloatVisualiserWindow">
+            <summary>
+            The "Visualise" command in the context menu of a <see cref="T:System.Single"/> property can be used to open this window
+            which visualises the property's value in the scene.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.FloatVisualiserWindow.WindowName">
+            <summary>
+            The name of the window to use as its title.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.FloatVisualiserWindow.ValidateTarget">
+            <summary>
+            Returns true if the target property is a <see cref="F:UnityEditor.SerializedPropertyType.Float"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.FloatVisualiserWindow.OnSceneGUI(UnityEditor.SceneView)">
+            <summary>
+            Draws gizmos in the scene to visualise the target property.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.EulerAttribute">
+            <summary>[Pro-Only]
+            Causes the attributed <see cref="T:UnityEngine.Quaternion"/> field to be drawn as Euler Angles.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.RequiredAttribute">
+            <summary>[Pro-Only]
+            When the attributed member is drawn in the inspector, it will be highlighted in red when it has the default value.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.UniqueCollectionAttribute">
+            <summary>[Pro-Only]
+            Shows a warning for any elements of the attributed collection which aren't unique.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.LabelledCollectionAttribute">
+            <summary>[Pro-Only]
+            Provides labels for the elements of a collection field to use instead of just calling them Element X.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.LabelledCollectionAttribute.GetLabel(System.Int32)">
+            <summary>Get the label to use for the element at the specified 'index' in the collection.</summary>
+        </member>
+        <member name="M:InspectorGadgets.LabelledCollectionAttribute.#ctor(System.String[])">
+            <summary>Uses the specified 'labels' for the collection elements.</summary>
+        </member>
+        <member name="M:InspectorGadgets.LabelledCollectionAttribute.#ctor(System.Type)">
+            <summary>Uses the value names of the specified 'enumType' for the collection elements.</summary>
+        </member>
+        <member name="M:InspectorGadgets.LabelledCollectionAttribute.#ctor(System.String)">
+            <summary>
+            Uses the member with the specified name to determine the labels of the collection elements.
+            <para></para>
+            If the member is a collection field, the values in that collection will be used as the element labels.
+            <para></para>
+            If the member is a method with a single int parameter and a non-void return type, it will be called with
+            each element index to determine the label.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.ToolbarAttribute">
+            <summary>[Pro-Only]
+            Causes a bool, string, or enum field to be drawn in the inspector as a series of toggle buttons rather than the
+            usual dropdown list or text field.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.ToolbarAttribute.Label">
+            <summary>
+            If set, this string will replace the field's default label.
+            </summary>
+        </member>
+        <member name="F:InspectorGadgets.ToolbarAttribute.Labels">
+            <summary>
+            The labels for each button in the toolbar. Enums will use their own names.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.ToolbarAttribute.#ctor">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.ToolbarAttribute"/>.
+            You must specify the <see cref="F:InspectorGadgets.ToolbarAttribute.Labels"/> unless the attributed field is an enum.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.ToolbarAttribute.#ctor(System.String[])">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.ToolbarAttribute"/> using the specified labels (not required for enums).
+            For bool fields, the first label is used for true and the second for false.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.InspectableAttribute">
+            <summary>[Pro-Only]
+            Adds the attributed field or property to the inspector as if it were serialized.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.InspectableAttribute.Readonly">
+            <summary>If true, the displayed field will be greyed out so the user can't modify it.</summary>
+        </member>
+        <member name="P:InspectorGadgets.InspectableAttribute.ConstantlyRepaint">
+            <summary>If true, the inspector will be constantly repainted while this label is shown to keep it updated.</summary>
+        </member>
+        <member name="T:InspectorGadgets.ButtonAttribute">
+            <summary>[Pro-Only]
+            <see cref="T:InspectorGadgets.Editor`1"/> uses this attribute to add a button at the bottom of the default inspector to run the marked method.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.ButtonAttribute.SetDirty">
+            <summary>If true, clicking the button will automatically call <see cref="M:UnityEditor.EditorUtility.SetDirty(UnityEngine.Object)"/> after invoking the method.</summary>
+        </member>
+        <member name="T:InspectorGadgets.LabelAttribute">
+            <summary>[Pro-Only]
+            <see cref="T:InspectorGadgets.Editor`1"/> uses this attribute to add a label at the bottom of the default inspector to display the value of the marked property.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.LabelAttribute.HideWhenNull">
+            <summary>If true, the label will be hidden when the value is null.</summary>
+        </member>
+        <member name="P:InspectorGadgets.LabelAttribute.ConstantlyRepaint">
+            <summary>If true, the inspector will be constantly repainted while this label is shown to keep it updated.</summary>
+        </member>
+        <member name="P:InspectorGadgets.LabelAttribute.LargeMode">
+            <summary>If true, the label or attributed member name will be drawn on one line with the actual value drawn below it and able to take as many lines as you want.</summary>
+        </member>
+        <member name="T:InspectorGadgets.ReadonlyAttribute">
+            <summary>[Pro-Only]
+            Causes the attributed field to be greyed out and un-editable in the inspector.
+            </summary>
+        </member>
+        <member name="F:InspectorGadgets.ReadonlyAttribute.When">
+            <summary>
+            Indicates when the field should be greyed out.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.ReadonlyAttribute.#ctor(InspectorGadgets.EditorState)">
+            <summary>
+            Constructs a new <see cref="T:InspectorGadgets.ReadonlyAttribute"/> to apply its effects in the specified <see cref="T:InspectorGadgets.EditorState"/>.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoHideUI">
+             <summary>
+             Automatically hides the UI layer inside the Editor so it doesn't get in the way of 3D objects in scene view.
+            <para></para>
+             When any object is selected that is on the UI layer, the layer will be shown and the camera changed to 2D orthographic and zoomed to the current selection.
+            <para></para>
+             When any object on another layer is selected, the UI layer will be hidden and the camera changed back to the previous state.
+             </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs">
+            <summary>
+            A collection of wrappers for PlayerPrefs and EditorPrefs which simplify the way you can store and retrieve values.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.IAutoPref">
+            <summary>Encapsulates a pref value stored with a specific key.</summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.IAutoPref.Key">
+            <summary>The key used to identify this pref.</summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.IAutoPref.Value">
+            <summary>The current value of this pref.</summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.AutoPref`1">
+            <summary>Encapsulates a pref value stored with a specific key.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.AutoPref`1.Key">
+            <summary>The key used to identify this pref.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.AutoPref`1.DefaultValue">
+            <summary>The default value to use if this pref has no existing value.</summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.AutoPref`1.Value">
+            <summary>The current value of this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.#ctor(System.String,`0)">
+            <summary>Constructs an <see cref="T:InspectorGadgets.AutoPrefs.AutoPref`1"/> with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.Load">
+            <summary>Loads the value of this pref from the system.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.Save">
+            <summary>Saves the value of this pref to the system.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.op_Implicit(InspectorGadgets.AutoPrefs.AutoPref{`0})~`0">
+            <summary>Returns the current value of this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.op_Equality(InspectorGadgets.AutoPrefs.AutoPref{`0},`0)">
+            <summary>Checks if the value of this pref is equal to the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.op_Inequality(InspectorGadgets.AutoPrefs.AutoPref{`0},`0)">
+            <summary>Checks if the value of this pref is not equal to the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.Reload">
+            <summary>Reloads the value of this pref from the system.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.GetHashCode">
+            <summary>Returns a hash code for the current pref value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.IsSaved">
+            <summary>Returns true if the preferences currently contains a saved value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.DeletePref">
+            <summary>Deletes the value of this pref from the preferences and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.RevertToDefaultValue">
+            <summary>
+            Sets <see cref="P:InspectorGadgets.AutoPrefs.AutoPref`1.Value"/> = <see cref="F:InspectorGadgets.AutoPrefs.AutoPref`1.DefaultValue"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.ToString">
+            <summary>Returns Value?.ToString().</summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.AutoPref`1.GUIFieldMethod">
+            <summary>[Editor-Only]
+            A delegate used to draw a GUI field and return its value.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle,InspectorGadgets.AutoPrefs.AutoPref{`0}.GUIFieldMethod)">
+            <summary>[Editor-Only]
+            Draws GUI controls for this pref and returns true if the value was changed.
+            </summary>
+            <param name="position">The rect in which to draw.</param>
+            <param name="content">The content to draw.</param>
+            <param name="style">The style to draw with.</param>
+            <param name="doGUIField">T delegate(<see cref="T:UnityEngine.Rect"/>, <see cref="T:UnityEngine.GUIContent"/>, <see cref="T:UnityEngine.GUIStyle"/>)</param>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)">
+            <summary>[Editor-Only]
+            Draws GUI controls for this pref and returns true if the value was changed.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.AutoPref`1.DefaultStyle">
+            <summary>[Editor-Only]
+            Draws the default GUI style used by this pref if none is specified when calling
+            <see cref="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.DoGUIField(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)">
+            <summary>[Editor-Only]
+            Draws a GUI field for this pref and returns the value it is set to.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.GetControlRect(UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
+            <summary>
+            Uses <see cref="M:UnityEditor.EditorGUILayout.GetControlRect(System.Boolean,System.Single,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])"/> to get a rect for a control.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.GetControlRect(UnityEngine.GUILayoutOption[])">
+            <summary>
+            Uses <see cref="M:UnityEditor.EditorGUILayout.GetControlRect(System.Boolean,System.Single,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])"/> to get a rect for a control.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.GUIContent,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
+            <summary>[Editor-Only]
+            Draws GUI controls for this pref and returns true if the value was changed.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.GUIContent,UnityEngine.GUIStyle,InspectorGadgets.AutoPrefs.AutoPref{`0}.GUIFieldMethod,UnityEngine.GUILayoutOption[])">
+            <summary>[Editor-Only]
+            Draws GUI controls for this pref and returns true if the value was changed.
+            </summary>
+            <param name="content">The content to draw.</param>
+            <param name="style">The style to draw with.</param>
+            <param name="doGUIField">T delegate(<see cref="T:UnityEngine.Rect"/>, <see cref="T:UnityEngine.GUIContent"/>, <see cref="T:UnityEngine.GUIStyle"/>)</param>
+            <param name="options">The layout options to use.</param>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(System.String,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
+            <summary>[Editor-Only]
+            Draws GUI controls for this pref and returns true if the value was changed.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.GUIContent,UnityEngine.GUILayoutOption[])">
+            <summary>[Editor-Only]
+            Draws GUI controls for this pref and returns true if the value was changed.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.GUIContent,InspectorGadgets.AutoPrefs.AutoPref{`0}.GUIFieldMethod,UnityEngine.GUILayoutOption[])">
+            <summary>[Editor-Only]
+            Draws GUI controls for this pref and returns true if the value was changed.
+            </summary>
+            <param name="content">The content to draw.</param>
+            <param name="doGUIField">T delegate(<see cref="T:UnityEngine.Rect"/>, <see cref="T:UnityEngine.GUIContent"/>, <see cref="T:UnityEngine.GUIStyle"/>)</param>
+            <param name="options">The layout options to use.</param>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(System.String,UnityEngine.GUILayoutOption[])">
+            <summary>[Editor-Only]
+            Draws GUI controls for this pref and returns true if the value was changed.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.Bool">
+            <summary>Encapsulates a <see cref="T:System.Boolean"/> value stored in <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Bool.#ctor(System.String,System.Boolean)">
+            <summary>Constructs a <see cref="T:InspectorGadgets.AutoPrefs.Bool"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Bool.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Bool.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Bool.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.Bool">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.Bool"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Bool.Invert">
+            <summary>Toggles the value of this pref from false to true or vice versa.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Bool.DoGUIField(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)">
+            <summary>[Editor-Only]
+            Draws a GUI field for this pref and returns the value it is set to.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.Bool.DefaultStyle">
+            <summary>[Editor-Only]
+            Draws the default GUI style used by this pref if none is specified when calling
+            <see cref="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)"/>.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.Float">
+            <summary>Encapsulates a <see cref="T:System.Single"/> value stored in <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Float.#ctor(System.String,System.Single)">
+            <summary>Constructs a <see cref="T:InspectorGadgets.AutoPrefs.Float"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Float.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Float.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Float.op_GreaterThan(InspectorGadgets.AutoPrefs.Float,System.Single)">
+            <summary>Checks if the value of this pref is greater then the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Float.op_LessThan(InspectorGadgets.AutoPrefs.Float,System.Single)">
+            <summary>Checks if the value of this pref is less then the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Float.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.Float">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.Float"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Float.DoGUIField(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)">
+            <summary>[Editor-Only]
+            Draws a GUI field for this pref and returns the value it is set to.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.Float.DefaultStyle">
+            <summary>[Editor-Only]
+            Draws the default GUI style used by this pref if none is specified when calling
+            <see cref="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)"/>.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.Int">
+            <summary>Encapsulates a <see cref="T:System.Int32"/> value stored in <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Int.#ctor(System.String,System.Int32)">
+            <summary>Constructs an <see cref="T:InspectorGadgets.AutoPrefs.Int"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Int.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Int.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Int.op_GreaterThan(InspectorGadgets.AutoPrefs.Int,System.Int32)">
+            <summary>Checks if the value of this pref is greater then the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Int.op_LessThan(InspectorGadgets.AutoPrefs.Int,System.Int32)">
+            <summary>Checks if the value of this pref is less then the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Int.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.Int">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.Int"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Int.DoGUIField(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)">
+            <summary>[Editor-Only]
+            Draws a GUI field for this pref and returns the value it is set to.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.Int.DefaultStyle">
+            <summary>[Editor-Only]
+            Draws the default GUI style used by this pref if none is specified when calling
+            <see cref="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)"/>.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.String">
+            <summary>Encapsulates a <see cref="T:System.String"/> value stored in <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.String.#ctor(System.String,System.String)">
+            <summary>Constructs a <see cref="T:InspectorGadgets.AutoPrefs.String"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.String.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.String.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.String.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.String">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.String"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.String.DoGUIField(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)">
+            <summary>[Editor-Only]
+            Draws a GUI field for this pref and returns the value it is set to.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.String.DefaultStyle">
+            <summary>[Editor-Only]
+            Draws the default GUI style used by this pref if none is specified when calling
+            <see cref="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)"/>.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.Vector2">
+            <summary>Encapsulates a <see cref="T:UnityEngine.Vector2"/> value stored in <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.Vector2.KeyY">
+            <summary>The key used to identify the y value of this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector2.#ctor(System.String,UnityEngine.Vector2)">
+            <summary>Constructs a <see cref="T:InspectorGadgets.AutoPrefs.Vector2"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector2.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector2.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector2.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEngine.PlayerPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector2.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector2.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.Vector2">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.Vector2"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector2.DoGUIField(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)">
+            <summary>[Editor-Only]
+            Draws a GUI field for this pref and returns the value it is set to.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.Vector2.DefaultStyle">
+            <summary>[Editor-Only]
+            Draws the default GUI style used by this pref if none is specified when calling
+            <see cref="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)"/>.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.Vector3">
+            <summary>Encapsulates a <see cref="T:UnityEngine.Vector3"/> value stored in <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.Vector3.KeyY">
+            <summary>The key used to identify the y value of this pref.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.Vector3.KeyZ">
+            <summary>The key used to identify the z value of this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector3.#ctor(System.String,UnityEngine.Vector3)">
+            <summary>Constructs a <see cref="T:InspectorGadgets.AutoPrefs.Vector3"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector3.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector3.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector3.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEngine.PlayerPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector3.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector3.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.Vector3">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.Vector3"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector3.DoGUIField(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)">
+            <summary>[Editor-Only]
+            Draws a GUI field for this pref and returns the value it is set to.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.Vector3.DefaultStyle">
+            <summary>[Editor-Only]
+            Draws the default GUI style used by this pref if none is specified when calling
+            <see cref="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)"/>.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.Vector4">
+            <summary>Encapsulates a <see cref="T:UnityEngine.Vector4"/> value stored in <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.Vector4.KeyY">
+            <summary>The key used to identify the y value of this pref.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.Vector4.KeyZ">
+            <summary>The key used to identify the z value of this pref.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.Vector4.KeyW">
+            <summary>The key used to identify the w value of this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector4.#ctor(System.String,UnityEngine.Vector4)">
+            <summary>Constructs a <see cref="T:InspectorGadgets.AutoPrefs.Vector4"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector4.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector4.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector4.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEngine.PlayerPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector4.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector4.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.Vector4">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.Vector4"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Vector4.DoGUIField(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)">
+            <summary>[Editor-Only]
+            Draws a GUI field for this pref and returns the value it is set to.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.Vector4.DefaultStyle">
+            <summary>[Editor-Only]
+            Draws the default GUI style used by this pref if none is specified when calling
+            <see cref="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)"/>.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.Quaternion">
+            <summary>Encapsulates a <see cref="T:UnityEngine.Quaternion"/> value stored in <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.Quaternion.KeyY">
+            <summary>The key used to identify the y value of this pref.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.Quaternion.KeyZ">
+            <summary>The key used to identify the z value of this pref.</summary>
+        </member>
+        <member name="F:InspectorGadgets.AutoPrefs.Quaternion.KeyW">
+            <summary>The key used to identify the w value of this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Quaternion.#ctor(System.String,UnityEngine.Quaternion)">
+            <summary>Constructs a <see cref="T:InspectorGadgets.AutoPrefs.Quaternion"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Quaternion.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Quaternion.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEngine.PlayerPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Quaternion.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEngine.PlayerPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Quaternion.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEngine.PlayerPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Quaternion.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.Quaternion">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.Quaternion"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.Quaternion.DoGUIField(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)">
+            <summary>[Editor-Only]
+            Draws a GUI field for this pref and returns the value it is set to.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.AutoPrefs.Quaternion.DefaultStyle">
+            <summary>[Editor-Only]
+            Draws the default GUI style used by this pref if none is specified when calling
+            <see cref="M:InspectorGadgets.AutoPrefs.AutoPref`1.OnGUI(UnityEngine.Rect,UnityEngine.GUIContent,UnityEngine.GUIStyle)"/>.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.EditorBool">
+            <summary>Encapsulates a <see cref="T:System.Boolean"/> value stored in <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorBool.#ctor(System.String,System.Boolean)">
+            <summary>Constructs an <see cref="T:InspectorGadgets.AutoPrefs.EditorBool"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorBool.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorBool.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorBool.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEditor.EditorPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorBool.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorBool.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.EditorBool">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.EditorBool"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.EditorFloat">
+            <summary>Encapsulates a <see cref="T:System.Single"/> value stored in <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorFloat.#ctor(System.String,System.Single)">
+            <summary>Constructs an <see cref="T:InspectorGadgets.AutoPrefs.EditorFloat"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorFloat.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorFloat.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorFloat.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEditor.EditorPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorFloat.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorFloat.op_GreaterThan(InspectorGadgets.AutoPrefs.EditorFloat,System.Single)">
+            <summary>Checks if the value of this pref is greater then the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorFloat.op_LessThan(InspectorGadgets.AutoPrefs.EditorFloat,System.Single)">
+            <summary>Checks if the value of this pref is less then the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorFloat.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.EditorFloat">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.EditorFloat"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.EditorInt">
+            <summary>Encapsulates a <see cref="T:System.Int32"/> value stored in <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorInt.#ctor(System.String,System.Int32)">
+            <summary>Constructs an <see cref="T:InspectorGadgets.AutoPrefs.EditorInt"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorInt.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorInt.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorInt.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEditor.EditorPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorInt.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorInt.op_GreaterThan(InspectorGadgets.AutoPrefs.EditorInt,System.Int32)">
+            <summary>Checks if the value of this pref is greater then the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorInt.op_LessThan(InspectorGadgets.AutoPrefs.EditorInt,System.Int32)">
+            <summary>Checks if the value of this pref is less then the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorInt.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.EditorInt">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.EditorInt"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.EditorString">
+            <summary>Encapsulates a <see cref="T:System.String"/> value stored in <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorString.#ctor(System.String,System.String)">
+            <summary>Constructs an <see cref="T:InspectorGadgets.AutoPrefs.EditorString"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorString.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorString.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorString.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEditor.EditorPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorString.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorString.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.EditorString">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.EditorString"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.EditorVector2">
+            <summary>Encapsulates a <see cref="T:UnityEngine.Vector2"/> value stored in <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector2.#ctor(System.String,InspectorGadgets.AutoPrefs.Vector2)">
+            <summary>Constructs an <see cref="T:InspectorGadgets.AutoPrefs.EditorString"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector2.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector2.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector2.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEditor.EditorPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector2.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector2.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.EditorVector2">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.EditorVector2"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.EditorVector3">
+            <summary>Encapsulates a <see cref="T:UnityEngine.Vector3"/> value stored in <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector3.#ctor(System.String,UnityEngine.Vector3)">
+            <summary>Constructs an <see cref="T:InspectorGadgets.AutoPrefs.EditorVector3"/> pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector3.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector3.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector3.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEditor.EditorPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector3.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector3.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.EditorVector3">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.EditorVector3"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.EditorVector4">
+            <summary>Encapsulates a <see cref="T:InspectorGadgets.AutoPrefs.Vector4"/> value stored in <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector4.#ctor(System.String,UnityEngine.Vector4)">
+            <summary>Constructs an <see cref="T:InspectorGadgets.AutoPrefs.EditorVector4"/> pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector4.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector4.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector4.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEditor.EditorPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector4.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorVector4.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.EditorVector4">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.EditorVector4"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="T:InspectorGadgets.AutoPrefs.EditorQuaternion">
+            <summary>Encapsulates a <see cref="T:UnityEngine.Quaternion"/> value stored in <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorQuaternion.#ctor(System.String,UnityEngine.Quaternion)">
+            <summary>Constructs a <see cref="T:InspectorGadgets.AutoPrefs.Quaternion"/> pref with the specified 'key' and 'defaultValue'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorQuaternion.#ctor(System.String)">
+            <summary>Constructs a <see cref="T:InspectorGadgets.AutoPrefs.Quaternion"/> pref with the specified 'key' and <see cref="P:UnityEngine.Quaternion.identity"/> as the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorQuaternion.Load">
+            <summary>Loads the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorQuaternion.Save">
+            <summary>Saves the value of this pref to <see cref="T:UnityEditor.EditorPrefs"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorQuaternion.IsSaved">
+            <summary>Returns true if <see cref="T:UnityEditor.EditorPrefs"/> currently contains a value for this pref.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorQuaternion.DeletePref">
+            <summary>Deletes the value of this pref from <see cref="T:UnityEditor.EditorPrefs"/> and reverts to the default value.</summary>
+        </member>
+        <member name="M:InspectorGadgets.AutoPrefs.EditorQuaternion.op_Implicit(System.String)~InspectorGadgets.AutoPrefs.EditorQuaternion">
+            <summary>Creates a new <see cref="T:InspectorGadgets.AutoPrefs.EditorQuaternion"/> pref using the specified string as the key.</summary>
+        </member>
+        <member name="T:InspectorGadgets.Comment">
+            <summary>
+            Holds a text comment for a <see cref="T:UnityEngine.GameObject"/> which can be viewed and edited in the inspector.
+            <para></para>
+            By default, this script sets itself to be excluded from the build.
+            </summary>
+        </member>
+        <member name="F:InspectorGadgets.Comment.text">
+            <summary>The text of this comment.</summary>
+        </member>
+        <member name="P:InspectorGadgets.Comment.IncludeInBuild">
+            <summary>Returns false if this script is set to <see cref="F:UnityEngine.HideFlags.DontSaveInBuild"/>.</summary>
+        </member>
+        <member name="T:InspectorGadgets.OnWillUnloadAssembliesAttribute">
+            <summary>
+            Registers a static parameterless method to be called when the Unity Editor unloads its assemblies, such as
+            after recompiling the user's scripts when preparing to load the newly compiled code.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.OnEditorQuitAttribute">
+            <summary>
+            Registers a static parameterless method to be called when the Unity Editor is closed.
+            <para></para>
+            Note that the method must be declared in a non-generic class.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.InspectorGadgetsUtils">
+            <summary>
+            Various utility methods used by <see cref="N:InspectorGadgets"/>.
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.InspectorGadgetsUtils.MoveSnapX">
+            <summary>[Editor-Only] The Unity editor's "Move X" snap setting (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="P:InspectorGadgets.InspectorGadgetsUtils.MoveSnapY">
+            <summary>[Editor-Only] The Unity editor's "Move Y" snap setting (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="P:InspectorGadgets.InspectorGadgetsUtils.MoveSnapZ">
+            <summary>[Editor-Only] The Unity editor's "Move Z" snap setting (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="P:InspectorGadgets.InspectorGadgetsUtils.MoveSnapVector">
+            <summary>[Editor-Only] (<see cref="P:InspectorGadgets.InspectorGadgetsUtils.MoveSnapX"/>, <see cref="P:InspectorGadgets.InspectorGadgetsUtils.MoveSnapY"/>, <see cref="P:InspectorGadgets.InspectorGadgetsUtils.MoveSnapZ"/>).</summary>
+        </member>
+        <member name="P:InspectorGadgets.InspectorGadgetsUtils.RotationSnap">
+            <summary>[Editor-Only] The Unity editor's "Rotation" snap setting (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="P:InspectorGadgets.InspectorGadgetsUtils.RotationSnapVector">
+            <summary>[Editor-Only] (<see cref="P:InspectorGadgets.InspectorGadgetsUtils.RotationSnap"/>, <see cref="P:InspectorGadgets.InspectorGadgetsUtils.RotationSnap"/>, <see cref="P:InspectorGadgets.InspectorGadgetsUtils.RotationSnap"/>).</summary>
+        </member>
+        <member name="P:InspectorGadgets.InspectorGadgetsUtils.ScaleSnap">
+            <summary>[Editor-Only] The Unity editor's "Scale" snap setting (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="P:InspectorGadgets.InspectorGadgetsUtils.ScaleSnapVector">
+            <summary>[Editor-Only] (<see cref="P:InspectorGadgets.InspectorGadgetsUtils.ScaleSnap"/>, <see cref="P:InspectorGadgets.InspectorGadgetsUtils.ScaleSnap"/>, <see cref="P:InspectorGadgets.InspectorGadgetsUtils.ScaleSnap"/>).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.Snap(System.Single,System.Single)">
+            <summary>[Editor-Only] Snaps the given 'value' to a grid with the specified 'snap' size.</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.SnapPosition(UnityEngine.Vector3)">
+            <summary>[Editor-Only] Snaps the given 'position' to the grid (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.SnapPosition(UnityEngine.Vector3,System.Int32)">
+            <summary>[Editor-Only] Snaps the given 'position' to the grid on the specified axis (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.SnapRotation(UnityEngine.Vector3)">
+            <summary>[Editor-Only] Snaps the given 'rotationEuler' to the nearest snap increment on all axes (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.SnapRotation(UnityEngine.Vector3,System.Int32)">
+            <summary>[Editor-Only] Snaps the given 'rotationEuler' to the nearest snap increment on the specified axis (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.SnapRotation(UnityEngine.Quaternion)">
+            <summary>[Editor-Only] Snaps the given 'rotation' to the nearest snap increment on all axes (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.SnapRotation(UnityEngine.Quaternion,System.Int32)">
+            <summary>[Editor-Only] Snaps the given 'rotation' to the nearest snap increment on the specified axis (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.SnapScale(UnityEngine.Vector3)">
+            <summary>[Editor-Only] Snaps the given 'scale' to the nearest snap increment on all axes (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.SnapScale(UnityEngine.Vector3,System.Int32)">
+            <summary>[Editor-Only] Snaps the given 'scale' to the nearest snap increment on the specified axis (as specified in Edit/Snap Settings).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.IsSnapped(System.Single,System.Single)">
+            <summary>[Editor-Only] Returns true if 'value' is approximately equal to a multiple of 'snap'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.DrawDelegate(UnityEngine.Rect,System.Delegate)">
+            <summary>[Editor-Only]
+            Draw the target and name of the specified <see cref="T:System.Delegate"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ForEachProperty(UnityEditor.SerializedObject,System.Action{UnityEditor.SerializedProperty})">
+            <summary>[Editor-Only]
+            Calls the specified 'method' for each M<see cref="T:UnityEditor.SerializedProperty"/> in the 'serializedObject' then
+            applies any modified properties.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ForEachTarget(UnityEditor.SerializedProperty,System.String,System.Action{UnityEngine.Object})">
+            <summary>[Editor-Only]
+            Records an Undo snapshot for the target objects of the 'property' then calls the 'function' for each of them.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ForEachTarget(UnityEditor.SerializedProperty,System.Action{UnityEditor.SerializedProperty})">
+            <summary>[Editor-Only]
+            Creates a new <see cref="T:UnityEditor.SerializedProperty"/> targeting the same field in each of the target objects of
+            the specified 'property' and calls the 'function' for each of them, then calls
+            <see cref="M:UnityEditor.SerializedObject.ApplyModifiedProperties"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.FindAssetOfType(System.Type,System.String)">
+            <summary>[Editor-Only]
+            Searches through all assets of the specified 'type' and returns the one with a name closest to the
+            'nameHint'.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.LayerMaskField(UnityEngine.Rect,UnityEngine.GUIContent,System.Int32)">
+            <summary>[Editor-Only]
+            Make a field for layer masks.
+            </summary>
+        </member>
+        <member name="F:InspectorGadgets.InspectorGadgetsUtils.InspectorGadgetsVersion">
+            <summary>This is Inspector Gadgets v5.0.</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ConvertCamelCaseToFriendly(System.String,System.Boolean)">
+            <summary>
+            Adds spaces to 'camelCase' before each uppercase letter.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ConvertCamelCaseToFriendly(System.Text.StringBuilder,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Adds spaces to 'camelCase' before each uppercase letter.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ConvertFieldNameToFriendly(System.String,System.Boolean)">
+            <summary>
+            Adds spaces to 'fieldName' before each uppercase letter and removes any underscores from the start.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.TruncateForLabel(System.String)">
+            <summary>
+            Truncate the given string so it can be used in a GUI.Label. MaxLength = 16,382.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.DeepToString(System.Collections.IEnumerable,System.String)">
+            <summary>Returns a string containing the value of each element in 'collection'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.DeepToString(System.Collections.IEnumerable)">
+            <summary>Returns a string containing the value of each element in 'collection' (each on a new line).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.AppendDeepToString(System.Text.StringBuilder,System.Collections.IEnumerator,System.String)">
+            <summary>Each element returned by 'enumerator' is appended to 'text'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.DeepToString(System.Collections.IEnumerator,System.String)">
+            <summary>Returns a string containing the value of each element in 'enumerator'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.DeepToString(System.Collections.IEnumerator)">
+            <summary>Returns a string containing the value of each element in 'enumerator' (each on a new line).</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetTransformPath(UnityEngine.Transform)">
+            <summary>
+            Appends the full transform path to the target with slashes between the names of each of its parents, much like a file path.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.AppendTransformPath(System.Text.StringBuilder,UnityEngine.Transform)">
+            <summary>
+            Appends the full transform path to the target with slashes between the names of each of its parents, much like a file path.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.Set(System.Nullable{System.Single},System.Single@)">
+            <summary>
+            If 'source' isn't null, 'target' is given its value.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.Set(System.Nullable{System.Single},System.Single)">
+            <summary>
+            If 'source' isn't null, return its value, otherwise return 'target'.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ToDisplayString(System.Nullable{System.Single})">
+            <summary>
+            Returns the specified 'value' as a string, or "-" if it is null.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.CalculateLevenshteinDistance(System.String,System.String)">
+            <summary>
+            Calculate the number of removals, inserts, and replacements needed to turn 'a' into 'b'.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetNameCS(System.Type,System.Boolean)">
+            <summary>
+            Returns the name of a 'type' as it would appear in C# code.
+            <para></para>
+            For example, typeof(List&lt;float&gt;).FullName would give you:
+            System.Collections.Generic.List`1[[System.Single, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+            <para></para>
+            This method would instead return System.Collections.Generic.List&lt;float&gt; if 'fullName' is true, or
+            just List&lt;float&gt; if it is false.
+            <para></para>
+            Note that all returned values are stored in a dictionary to speed up repeated use.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.AppendNameAndGenericArguments(System.Text.StringBuilder,System.Type,System.Boolean,System.Int32)">
+            <summary>
+            Appends the generic arguments of 'type' (after skipping the specified number).
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetNameCS(System.Reflection.MemberInfo,System.Boolean)">
+            <summary>
+            Returns the full name of a 'member' as it would appear in C# code.
+            <para></para>
+            For example, passing this method info in as its own parameter would return "<see cref="T:InspectorGadgets.InspectorGadgetsUtils"/>.GetNameCS".
+            <para></para>
+            Note that when 'member' is a <see cref="T:System.Type"/>, this method calls <see cref="M:InspectorGadgets.InspectorGadgetsUtils.GetNameCS(System.Type,System.Boolean)"/> instead.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.AppendNameCS(System.Text.StringBuilder,System.Reflection.MemberInfo,System.Boolean)">
+            <summary>
+            Appends the full name of a 'member' as it would appear in C# code.
+            <para></para>
+            For example, passing this method info in as its own parameter would append "<see cref="T:InspectorGadgets.InspectorGadgetsUtils"/>.AppendName".
+            <para></para>
+            Note that when 'member' is a <see cref="T:System.Type"/>, this method calls <see cref="M:InspectorGadgets.InspectorGadgetsUtils.GetNameCS(System.Type,System.Boolean)"/> instead.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetCustomAttribute``1(System.Reflection.ICustomAttributeProvider,System.Boolean)">
+            <summary>
+            Gets a single custom attribute of type T and casts it.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetAttributedFields``1(System.Type,System.Reflection.BindingFlags,System.Collections.Generic.List{``0},System.Collections.Generic.List{System.Reflection.FieldInfo})">
+            <summary>Get all fields with the specified attribute in 'type'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetAttributedProperties``1(System.Type,System.Reflection.BindingFlags,System.Collections.Generic.List{``0},System.Collections.Generic.List{System.Reflection.PropertyInfo})">
+            <summary>Get all properties with the specified attribute in 'type'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetAttributedMethods``1(System.Type,System.Reflection.BindingFlags,System.Collections.Generic.List{``0},System.Collections.Generic.List{System.Reflection.MethodInfo})">
+            <summary>Get all methods with the specified attribute in 'type'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ForEachTypeInDependantAssemblies(System.Reflection.Assembly,System.Action{System.Type})">
+            <summary>
+            Calls the specified 'method' once for each type in each loaded assembly that references the specified 'assembly'.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ForEachType(System.Reflection.Assembly,System.Action{System.Type})">
+            <summary>
+            Calls the specified 'method' once for each type in the specified 'assembly'.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetDerivedTypes(System.Type,System.Boolean)">
+            <summary>
+            Gets all non-abstract types in the currently loaded assemblies which derive from the specified base type
+            (including the base type itself if it isn't abstract).
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetDerivedTypes(System.Type,System.Collections.Generic.ICollection{System.Type},System.Boolean)">
+            <summary>
+            Gets all non-abstract types in the currently loaded assemblies which derive from the specified base type
+            (including the base type itself if it isn't abstract).
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ProgressiveSearch(UnityEngine.GameObject,System.Type)">
+            <summary>
+            Tries various search methods until it finds something: first GetComponent, then GetComponentInParent,
+            then GetComponentInChildren, then FindObjectOfType.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ProgressiveSearch(UnityEngine.GameObject,System.Type,System.String)">
+            <summary>
+            Tries various search methods until it finds something: first GetComponent, then GetComponentsInParent,
+            then GetComponentsInChildren, then FindObjectsOfType.
+            <para></para>
+            In the first group where a component of the correct type is found, if multiple components were found the
+            one with a name closest to the 'nameHint' is chosen.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetComponentInHierarchy(UnityEngine.GameObject,System.Type,System.String)">
+            <summary>
+            Finds a component of the specified 'componentType' on the 'gameObject' or any of its parents or children.
+            If multiple components are found the one with a name closest to the 'nameHint' is chosen.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetBestComponent``1(``0[],System.String,System.Int32@)">
+            <summary>
+            Compares the name of each of the 'objects' and returns the one that is closest to the 'nameHint'.
+            <para></para>
+            See also: <see cref="M:InspectorGadgets.InspectorGadgetsUtils.CalculateLevenshteinDistance(System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetBestComponent``1(``0[],System.String)">
+            <summary>
+            Compares the name of each of the 'objects' and returns the one that is closest to the 'nameHint'.
+            <para></para>
+            See also: <see cref="M:InspectorGadgets.InspectorGadgetsUtils.CalculateLevenshteinDistance(System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.ProgressiveSearch``1(UnityEngine.GameObject,System.Type)">
+            <summary>
+            Tries various search methods until it finds something: first GetComponent, then GetComponentInParent,
+            then GetComponentInChildren, then FindObjectOfType.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.StableInsertionSort``1(System.Collections.Generic.IList{``0},System.Comparison{``0})">
+            <summary>
+            Sorts 'list', maintaining the order of any elements with an identical comparison
+            (unlike the standard <see cref="M:System.Collections.Generic.List`1.Sort(System.Comparison{`0})"/> method).
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.StableInsertionSort``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Sorts 'list', maintaining the order of any elements with an identical comparison
+            (unlike the standard <see cref="M:System.Collections.Generic.List`1.Sort"/> method).
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.GetOrAdd``2(System.Collections.Generic.IDictionary{``0,``1},``0)">
+            <summary>
+            If the specified 'key' is present in the 'dictionary', its value is returned.
+            Otherwise a new value is added to the 'dictionary' and returned.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.InspectorGadgetsUtils.IsNow(InspectorGadgets.EditorState)">
+            <summary>
+            Returns true if the Unity editor is currently in the specified 'state'.
+            </summary>
+        </member>
+        <member name="T:InspectorGadgets.NullableVector4">
+            <summary>
+            A <see cref="T:UnityEngine.Vector4"/> which uses nullable floats.
+            </summary>
+        </member>
+        <member name="F:InspectorGadgets.NullableVector4.x">
+            <summary>The X component of this vector.</summary>
+        </member>
+        <member name="F:InspectorGadgets.NullableVector4.y">
+            <summary>The Y component of this vector.</summary>
+        </member>
+        <member name="F:InspectorGadgets.NullableVector4.z">
+            <summary>The Z component of this vector.</summary>
+        </member>
+        <member name="F:InspectorGadgets.NullableVector4.w">
+            <summary>The W component of this vector.</summary>
+        </member>
+        <member name="P:InspectorGadgets.NullableVector4.Item(System.Int32)">
+            <summary>Gets or sets the component of this vector at the specified index: 0 = x, 1 = y, 2 = z, 3 = w.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.AnyNull">
+            <summary>Returns true if any of the components of this vector are null.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.AnyNull(System.Int32)">
+            <summary>Returns true if any of the components of this vector are null, ignoring components after 'componentCount'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.AllNull">
+            <summary>Returns true if all of the components of this vector are null.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.AllNull(System.Int32)">
+            <summary>Returns true if all of the components of this vector are null, ignoring components after 'componentCount'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.#ctor">
+            <summary>Constructs a new <see cref="T:InspectorGadgets.NullableVector4"/> with all components null.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.#ctor(System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Single})">
+            <summary>Constructs a new <see cref="T:InspectorGadgets.NullableVector4"/> with the specified components.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.#ctor(UnityEngine.Vector2)">
+            <summary>Constructs a new <see cref="T:InspectorGadgets.NullableVector4"/> with each of its components set the same as the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.#ctor(UnityEngine.Vector3)">
+            <summary>Constructs a new <see cref="T:InspectorGadgets.NullableVector4"/> with each of its components set the same as the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.#ctor(UnityEngine.Vector4)">
+            <summary>Constructs a new <see cref="T:InspectorGadgets.NullableVector4"/> with each of its components set the same as the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.#ctor(InspectorGadgets.NullableVector4)">
+            <summary>Constructs a new <see cref="T:InspectorGadgets.NullableVector4"/> with each of its components set the same as the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.#ctor(System.Nullable{System.Single}[])">
+            <summary>Constructs a new <see cref="T:InspectorGadgets.NullableVector4"/> using the first 4 elements of the specified array as its components.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.SetAllNull">
+            <summary>Sets all components of this vector to null.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.ZeroAllNulls">
+            <summary>Sets all components of this vector which are null to 0.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.CopyFrom(InspectorGadgets.NullableVector4)">
+            <summary>Sets each of the components of this vector to be the same as the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.CopyFrom(UnityEngine.Vector2)">
+            <summary>Sets each of the components of this vector to be the same as the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.CopyFrom(UnityEngine.Vector3)">
+            <summary>Sets each of the components of this vector to be the same as the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.CopyFrom(UnityEngine.Vector4)">
+            <summary>Sets each of the components of this vector to be the same as the specified 'value'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.ToVector2">
+            <summary>
+            Returns a new <see cref="T:UnityEngine.Vector2"/> using components of this vector.
+            Any components which are null will be set to 0.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.ToVector3">
+            <summary>
+            Returns a new <see cref="T:UnityEngine.Vector3"/> using components of this vector.
+            Any components which are null will be set to 0.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.ToVector4">
+            <summary>
+            Returns a new <see cref="T:UnityEngine.Vector3"/> using components of this vector.
+            Any components which are null will be set to 0.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.ToVector3(UnityEngine.Vector2)">
+            <summary>
+            Returns a new <see cref="T:UnityEngine.Vector3"/> using components of this vector.
+            Any components which are null will instead use the corresponding component of the specified 'fallback'.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.ToVector3(UnityEngine.Vector3)">
+            <summary>
+            Returns a new <see cref="T:UnityEngine.Vector3"/> using components of this vector.
+            Any components which are null will instead use the corresponding component of the specified 'fallback'.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.ToVector4(UnityEngine.Vector4)">
+            <summary>
+            Returns a new <see cref="T:UnityEngine.Vector4"/> using components of this vector.
+            Any components which are null will instead use the corresponding component of the specified 'fallback'.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.ToString(System.Int32)">
+            <summary>Returns a nicely formatted string for this vector using '-' to denote nulls.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.ToString">
+            <summary>Returns a nicely formatted string for this vector using '-' to denote nulls.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.TryParse(System.String,System.Int32,InspectorGadgets.NullableVector4@)">
+            <summary>
+            Attempts to parse a series of floats from the given string and returns the index of the last successfully parsed value.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.op_Equality(InspectorGadgets.NullableVector4,InspectorGadgets.NullableVector4)">
+            <summary>Returns true if all of the components of 'a' and 'b' are equal.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.op_Inequality(InspectorGadgets.NullableVector4,InspectorGadgets.NullableVector4)">
+            <summary>Returns true if any of the components of 'a' and 'b' are not equal.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.Equals(InspectorGadgets.NullableVector4,System.Int32)">
+            <summary>Returns true if all of the components of 'this' and 'other' are equal, ignoring components after 'componentCount'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.Equals(System.Object)">
+            <summary>Returns true if all of the components of 'a' and 'b' are equal.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.GetHashCode">
+            <summary>Throws a <see cref="T:System.NotImplementedException"/>.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.op_Implicit(UnityEngine.Vector2)~InspectorGadgets.NullableVector4">
+            <summary>Returns a new <see cref="T:InspectorGadgets.NullableVector4"/> with each of its components set the same as the specified 'vector'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.op_Implicit(UnityEngine.Vector3)~InspectorGadgets.NullableVector4">
+            <summary>Returns a new <see cref="T:InspectorGadgets.NullableVector4"/> with each of its components set the same as the specified 'vector'.</summary>
+        </member>
+        <member name="M:InspectorGadgets.NullableVector4.op_Implicit(UnityEngine.Vector4)~InspectorGadgets.NullableVector4">
+            <summary>Returns a new <see cref="T:InspectorGadgets.NullableVector4"/> with each of its components set the same as the specified 'vector'.</summary>
+        </member>
+        <member name="T:InspectorGadgets.EditorState">
+            <summary>
+            Represents an editor state which can be used as a condition: play mode, edit mode, or ayways.
+            </summary>
+        </member>
+        <member name="F:InspectorGadgets.EditorState.Always">
+            <summary>All the time, regardless of the current state of the Unity editor.</summary>
+        </member>
+        <member name="F:InspectorGadgets.EditorState.Playing">
+            <summary>When the Unity editor is in play mode.</summary>
+        </member>
+        <member name="F:InspectorGadgets.EditorState.Editing">
+            <summary>When the Unity editor is not in play mode.</summary>
+        </member>
+        <member name="T:InspectorGadgets.Editor`1">
+            <summary>[Pro-Only]
+            Base class to derive custom editors from, with a bunch of additional features on top of Unity's base
+            <see cref="T:UnityEditor.Editor"/> class.
+            <para></para>
+            Doesn't draw the target's "Script" field to save inspector space and reduce clutter.
+            <para></para>
+            You can Middle Click anywhere in the inspector area to open the script in your script editor or Ctrl + Middle
+            Click to open its editor script (or create one if none exists already).
+            <para></para>
+            Provides type-casted versions of <see cref="P:UnityEditor.Editor.target"/> and <see cref="P:UnityEditor.Editor.targets"/> so you don't
+            always have to do it yourself (<see cref="P:InspectorGadgets.Editor`1.Target"/> and <see cref="P:InspectorGadgets.Editor`1.Targets"/> respectively).
+            </summary>
+        </member>
+        <member name="P:InspectorGadgets.Editor`1.Target">
+            <summary>The object being inspected (<see cref="P:UnityEditor.Editor.target"/> casted to T).</summary>
+        </member>
+        <member name="P:InspectorGadgets.Editor`1.Targets">
+            <summary>An array of all the objects being inspected (<see cref="P:UnityEditor.Editor.targets"/> casted to T).</summary>
+        </member>
+        <member name="P:InspectorGadgets.Editor`1.Current">
+            <summary>The editor currently being drawn.</summary>
+        </member>
+        <member name="P:InspectorGadgets.Editor`1.CurrentTarget">
+            <summary>The object being inspected (<see cref="P:UnityEditor.Editor.target"/> casted to T) by the editor currently being drawn.</summary>
+        </member>
+        <member name="P:InspectorGadgets.Editor`1.CurrentTargets">
+            <summary>An array of all the objects being inspected (<see cref="P:UnityEditor.Editor.targets"/> casted to T) by the editor currently being drawn.</summary>
+        </member>
+        <member name="M:InspectorGadgets.Editor`1.OnInspectorGUI">
+            <summary>
+            Draws the target's regular inspector followed by any extra inspectables
+            (<see cref="T:InspectorGadgets.ButtonAttribute"/> and <see cref="T:InspectorGadgets.LabelAttribute"/>), and responds to Middle
+            Click events.
+            <para></para>
+            To modify or replace just the regular inspector and keep the extra features of <see cref="T:InspectorGadgets.Editor`1"/>,
+            override <see cref="M:InspectorGadgets.Editor`1.DoPropertiesAndInspectables"/> instead of <see cref="M:InspectorGadgets.Editor`1.OnInspectorGUI"/>.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Editor`1.DoInspectorGUI">
+            <summary>
+            Draws the inspector GUI of the <see cref="P:InspectorGadgets.Editor`1.Current"/> editor.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Editor`1.DoPropertiesAndInspectables">
+            <summary>
+            Draws all of the target's serialized properties and inspectables.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Editor`1.DoPropertiesAndInspectables(UnityEditor.SerializedObject)">
+            <summary>
+            Draws all of the target's serialized properties and inspectables.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Editor`1.OnPropertyModified">
+            <summary>
+            This method is called if any of the target's serialized members are modified during <see cref="M:InspectorGadgets.Editor`1.DoInspectorGUI"/>.
+            This method does nothing by default.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Editor`1.CheckMiddleClick(UnityEngine.Rect)">
+            <summary>
+            Checks if the current event is a Middle Click to open the script in the user's script editor application,
+            or Ctrl + Middle Click to open or create its custom inspector script.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Editor`1.DoAllInspectables">
+            <summary>[Pro-Only]
+            Draw all <see cref="T:InspectorGadgets.InspectableAttribute"/> members.
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.Editor`1.RecordTargetUndo(System.String)">
+            <summary>
+            Records the current state of the <see cref="P:InspectorGadgets.Editor`1.Targets"/> so that any subsequent changes can be undone
+            (reverted back to the recorded state).
+            </summary>
+        </member>
+        <member name="M:InspectorGadgets.TransformEditor.ShouldDisableSceneTools">
+            <summary>
+            Returns true in play mode if any of the selected objects are marked as static.
+            </summary>
+        </member>
+    </members>
+</doc>
