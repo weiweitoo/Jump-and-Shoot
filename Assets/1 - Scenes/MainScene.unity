@@ -1676,14 +1676,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84bc4c5596c838438aeefc68891d9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 12
-  fallSpeed: 25
-  stunTime: 0.5
   playerParent: {fileID: 96478586}
-  isDead: 0
   shootEffectPrefab: {fileID: 1710944146630792, guid: c6203491d54e64c4299e30db6e1f29d1,
     type: 2}
+  jumpSpeed: 12
+  alwaysLeftSpeed: 3
+  alwaysRightSpeed: 3
+  fallSpeed: 25
+  stunTime: 0.5
   wallAdjustment: 0.5
+  isDead: 0
+  previousPosXParent: 0
+  ScreenRadiusInWorldX: 0
+  hueValue: 0
+  currentPlayerState: 0
+  standingGroundType: 0
 --- !u!96 &1554876208
 TrailRenderer:
   serializedVersion: 2

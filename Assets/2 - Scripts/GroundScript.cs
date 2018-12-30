@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GroundScript : MonoBehaviour {
+	public enum GroundType{
+		Normal,JumpHigh,TimeBomb
+	}
+
 	public float minDistanceFromScreen = 1f;
 	public float maxDistanceFromScreen = 2f;
 	public float wallAdjustment = 0.5f;
 	public float shakeEffect = 0.4f;
+	public GroundType groundType;
 	[ReadOnly] public float velocity = 1f;
 	[ReadOnly] public float distance;
 	[ReadOnly] public float screenWidth;
@@ -31,6 +36,13 @@ public class GroundScript : MonoBehaviour {
 		angle += velocity / 100f;
 	}
 
+	public void SetGround(float minDistanceFromScreen, float maxDistanceFromScreen, float velocity, GroundType groundType){
+		this.minDistanceFromScreen = minDistanceFromScreen;
+		this.maxDistanceFromScreen = maxDistanceFromScreen;
+		this.velocity = velocity;
+		this.groundType = groundType;
+	}
+
 	public IEnumerator LandingEffect(){
 		Vector2 originalPosition = transform.position;
 		float yChangeValue = shakeEffect;
@@ -44,4 +56,6 @@ public class GroundScript : MonoBehaviour {
 
 		yield break;
 	}
+
+
 }

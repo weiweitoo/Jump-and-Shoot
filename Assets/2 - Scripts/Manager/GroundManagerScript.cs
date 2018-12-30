@@ -20,7 +20,7 @@ public class GroundManagerScript : MonoBehaviour {
 	}
 	
 	void Update () {
-		// GenerateGround();	
+
 	}
 
 	void InitGround(){
@@ -41,7 +41,17 @@ public class GroundManagerScript : MonoBehaviour {
 	}
 
 	void SetSpeed(GameObject obj){
-		obj.GetComponent<GroundScript>().velocity = Random.Range(minVelocity,maxVelocity);
+		// Random Type
+		GroundScript.GroundType groundType = (GroundScript.GroundType)Random.Range(0, 3);
+		float velocity = 0;
+		if(groundType == GroundScript.GroundType.Normal || groundType == GroundScript.GroundType.JumpHigh){
+			velocity = Random.Range(minVelocity,maxVelocity);
+		}
+		else if(groundType == GroundScript.GroundType.TimeBomb){
+			velocity = Random.Range(minVelocity * 1.25f,maxVelocity * 1.25f);
+		}
+
+		obj.GetComponent<GroundScript>().SetGround(1,2,velocity,groundType);
 	}
 
 }
