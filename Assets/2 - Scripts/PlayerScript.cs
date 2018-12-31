@@ -47,7 +47,6 @@ public class PlayerScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D target){
 		// Get Standing Groud Type
 		standingGroundType = target.gameObject.GetComponent<GroundScript>().groundType;
-		Debug.Log(standingGroundType);
 
 		rigidBody2DComponent.velocity = Vector2.zero;
 		currentPlayerState = PlayerState.Standing;
@@ -57,12 +56,17 @@ public class PlayerScript : MonoBehaviour {
 		GameObject.Find("ScoreManager").GetComponent<ScoreManagerScript>().AddScore();
 	}
 
-	void OnCollisionExit2D(Collision2D target){
+	IEnumerator OnCollisionExit2D(Collision2D target){
 		// Not sure why it trgger cllsioin before jump. So here set the state to Stnanding
-		if(currentPlayerState == PlayerState.Standing){
+		yield return new WaitForSeconds(0.1f);
+		// Debug.Log("Exiting");
+		// Debug.Log(currentPlayerState);
+		
+		if(currentPlayerState == PlayerState.Jumping){
 			GameObject.Find("GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
 			Destroy(target.gameObject,0.1f);
 		}
+		yield break;
 	}
 
 	void GetPreviousPositionOfParent(){
@@ -122,7 +126,7 @@ public class PlayerScript : MonoBehaviour {
 		else if(standingGroundType == GroundScript.GroundType.JumpHigh){
 			rigidBody2DComponent.velocity = new Vector2(ParentVelocity(),jumpSpeed * 1.27f);
 		}
-		
+
 		transform.SetParent(playerParent.transform);
 	}
 
