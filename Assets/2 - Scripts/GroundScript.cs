@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundScript : MonoBehaviour {
 	public enum GroundType{
-		Normal,JumpHigh,TimeBomb
+		Normal,JumpHigh,TimeBomb,Static
 	}
 
 	public float minDistanceFromScreen = 1f;
@@ -27,7 +27,7 @@ public class GroundScript : MonoBehaviour {
 	}
 
 	void Update () {
-		if(playerScript.isDead) return;
+		if(playerScript.isDead || groundType == GroundType.Static) return;
 		Move();
 	}
 

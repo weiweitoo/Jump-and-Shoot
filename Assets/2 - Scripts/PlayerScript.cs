@@ -38,10 +38,12 @@ public class PlayerScript : MonoBehaviour {
 	}
 	
 	void Update () {
-		GetInput();
-		BounceAtWall();
-		GetPreviousPositionOfParent();
-		DeadCheck();
+		if(GameManagerScript.isPlaying()){
+			GetInput();
+			BounceAtWall();
+			GetPreviousPositionOfParent();
+			DeadCheck();
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D target){
@@ -57,10 +59,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	IEnumerator OnCollisionExit2D(Collision2D target){
-		// Not sure why it trgger cllsioin before jump. So here set the state to Stnanding
 		yield return new WaitForSeconds(0.1f);
-		// Debug.Log("Exiting");
-		// Debug.Log(currentPlayerState);
 		
 		if(currentPlayerState == PlayerState.Jumping){
 			GameObject.Find("GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
@@ -80,9 +79,6 @@ public class PlayerScript : MonoBehaviour {
 	void BounceAtWall(){
 		float screenWidth = GameObject.Find("Main Camera").GetComponent<Camera>().ScreenToWorldPoint(new Vector2(Screen.width,0)).x - wallAdjustment;
 		float transformX = rigidBody2DComponent.position.x;
-		// Debug.Log(transformX);
-		// Debug.Log(screenWidth);
-		// Debug.Log("======");
 
 		if(transformX < -screenWidth){
 			rigidBody2DComponent.position = new Vector2(-screenWidth,rigidBody2DComponent.position.y);
@@ -93,25 +89,15 @@ public class PlayerScript : MonoBehaviour {
 			rigidBody2DComponent.position = new Vector2(screenWidth,rigidBody2DComponent.position.y);
 			rigidBody2DComponent.velocity = new Vector2(-rigidBody2DComponent.velocity.x,rigidBody2DComponent.velocity.y);
 		}
-
-		// if(rigidBody2DComponent.position.x < -ScreenRadiusInWorldX){
-		// 	rigidBody2DComponent.position = new Vector2(-ScreenRadiusInWorldX,rigidBody2DComponent.position.y);
-		// 	rigidBody2DComponent.velocity = new Vector2(-rigidBody2DComponent.velocity.x,rigidBody2DComponent.velocity.y);
-		// }
-
-		// if(rigidBody2DComponent.position.x >= ScreenRadiusInWorldX){
-		// 	rigidBody2DComponent.position = new Vector2(ScreenRadiusInWorldX,rigidBody2DComponent.position.y);
-		// 	rigidBody2DComponent.velocity = new Vector2(-rigidBody2DComponent.velocity.x,rigidBody2DComponent.velocity.y);
-		// }
 	}
 
 	void GetInput(){
 		if (Input.GetMouseButtonDown(0)){
-			if(currentPlayerState == PlayerState.Standing){
-				Jump();
-			}
-			else if(currentPlayerState == PlayerState.Jumping){
+			if(currentPlayerState == PlayerState.Jumping){
 				StartCoroutine(Fall());
+			}
+			else{
+				Jump();
 			}
 		}
 	}
@@ -120,11 +106,10 @@ public class PlayerScript : MonoBehaviour {
 		boxCollider2D.enabled = false;
 		currentPlayerState = PlayerState.Jumping;
 
-		if(standingGroundType == GroundScript.GroundType.Normal || standingGroundType == GroundScript.GroundType.TimeBomb){
-			rigidBody2DComponent.velocity = new Vector2(ParentVelocity(),jumpSpeed);
-		}
-		else if(standingGroundType == GroundScript.GroundType.JumpHigh){
+		if(standingGroundType == GroundScript.GroundType.JumpHigh){
 			rigidBody2DComponent.velocity = new Vector2(ParentVelocity(),jumpSpeed * 1.27f);
+		}else{
+			rigidBody2DComponent.velocity = new Vector2(ParentVelocity(),jumpSpeed);
 		}
 
 		transform.SetParent(playerParent.transform);

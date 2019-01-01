@@ -5,10 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour {
 
+	public enum GameState{
+		Menu,Playing,Shop
+	};
+	public static GameState gameState;
 	public GameObject gameOverPanel;
+	public GameObject menuPanel;
+	public GameObject player;
 
 	void Awake(){
 		Time.timeScale = 1f;
+		gameState = GameState.Menu;
+	}
+
+	void Update(){
+		if (GameManagerScript.gameState == GameState.Menu && Input.GetMouseButtonDown(0)){
+			StartCoroutine(StartGame());
+		}
+	}
+
+	IEnumerator StartGame(){
+		yield return new WaitForSeconds(0.2f);
+		menuPanel.GetComponent<Animator>().SetBool("InMenu",false);
+		player.GetComponent<Animator>().SetBool("PlayerActive",true);
+		GameManagerScript.gameState = GameState.Playing;
+
+		yield break;
 	}
 
 	public void GameOver(){
@@ -22,8 +44,20 @@ public class GameManagerScript : MonoBehaviour {
 		GameObject.Find("ScoreManager").GetComponent<ScoreManagerScript>().ChangeColorToWhite();
 	}
 
-	public void Restart(){
-		Debug.Log(123);
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	public void RestartGame(){
+		Scene scene = SceneManager.GetActiveScene(); 
+		SceneManager.LoadScene(scene.name);
+	}
+
+	public static bool isPlaying(){
+		return GameManagerScript.gameState == GameManagerScript.GameState.Playing;
+	}
+
+	public static bool isMenu(){
+		return GameManagerScript.gameState == GameManagerScript.GameState.Menu;
+	}
+
+	public static bool isShop(){
+		return GameManagerScript.gameState == GameManagerScript.GameState.Shop;
 	}
 }

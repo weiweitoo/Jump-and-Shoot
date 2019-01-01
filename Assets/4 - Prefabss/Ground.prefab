@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073918514104900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 2.67, z: 0}
+  m_LocalPosition: {x: 0, y: -5.2861447, z: 0}
   m_LocalScale: {x: 4, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,6 +82,7 @@ MonoBehaviour:
   maxDistanceFromScreen: 1
   wallAdjustment: 0.5
   shakeEffect: 0.4
+  groundType: 3
   velocity: 800
   distance: 2
   screenWidth: 0

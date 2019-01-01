@@ -30,4 +30,16 @@ public class ScoreManagerScript : MonoBehaviour {
 		currentScoreText.color = Color.white;
 		best.color = Color.white;
 	}
+
+	public void ShowBestScoreOnly(){
+		currentScoreText.enabled = false;
+		bestScoreText.enabled = true;
+		best.enabled = true;
+	}
+
+	public void ShowBestScoreAndCurrScore(){
+		currentScoreText.enabled = true;
+		bestScoreText.enabled = true;
+		best.enabled = true;
+	}
 }
