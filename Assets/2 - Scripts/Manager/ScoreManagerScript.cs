@@ -4,14 +4,15 @@ using UnityEngine;
 using TMPro;
 
 public class ScoreManagerScript : MonoBehaviour {
-
 	public int currentScore = 0;
 	public TextMeshPro currentScoreText;
 	public TextMeshPro bestScoreText;
 	public TextMeshPro best;
+	[ReadOnly] public float bestScore;
 
 	void Start () {
-		bestScoreText.text = PlayerPrefs.GetInt("BestScore",0).ToString();
+		bestScore = PlayerStateManagerScript.instance.GetBestScore();
+		bestScoreText.text = bestScore.ToString();
 		currentScoreText.text = currentScore.ToString();
 	}
 	
@@ -19,9 +20,9 @@ public class ScoreManagerScript : MonoBehaviour {
 		currentScore++;
 		currentScoreText.text = currentScore.ToString();
 
-		if(currentScore > PlayerPrefs.GetInt("BestScore",0)){
+		if(currentScore > bestScore){
 			bestScoreText.text = currentScore.ToString();
-			PlayerPrefs.SetInt("BestScore",currentScore);
+			PlayerStateManagerScript.instance.SetBestScore(currentScore);
 		}
 	}
 

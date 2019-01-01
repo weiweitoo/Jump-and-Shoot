@@ -41,7 +41,7 @@ public class GameManagerScript : MonoBehaviour {
 		Time.timeScale = 0.1f;
 		yield return new WaitForSecondsRealtime(0.5f);
 		gameOverPanel.SetActive(true);
-		GameObject.Find("ScoreManager").GetComponent<ScoreManagerScript>().ChangeColorToWhite();
+		GameObject.Find("_ScoreManager").GetComponent<ScoreManagerScript>().ChangeColorToWhite();
 	}
 
 	public void RestartGame(){

@@ -55,14 +55,14 @@ public class PlayerScript : MonoBehaviour {
 		transform.SetParent(target.gameObject.transform);
 		GetPreviousPositionOfParent();
 		StartCoroutine(target.gameObject.GetComponent<GroundScript>().LandingEffect());
-		GameObject.Find("ScoreManager").GetComponent<ScoreManagerScript>().AddScore();
+		GameObject.Find("_ScoreManager").GetComponent<ScoreManagerScript>().AddScore();
 	}
 
 	IEnumerator OnCollisionExit2D(Collision2D target){
 		yield return new WaitForSeconds(0.1f);
 		
 		if(currentPlayerState == PlayerState.Jumping){
-			GameObject.Find("GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
+			GameObject.Find("_GroundManager").GetComponent<GroundManagerScript>().GenerateGround();
 			Destroy(target.gameObject,0.1f);
 		}
 		yield break;
@@ -119,7 +119,7 @@ public class PlayerScript : MonoBehaviour {
 		if(isDead == false && Camera.main.transform.position.y - transform.position.y > 10){
 			isDead = true;
 			StopPlayer();
-			GameObject.Find("GameManager").GetComponent<GameManagerScript>().GameOver();
+			GameObject.Find("_GameManager").GetComponent<GameManagerScript>().GameOver();
 		}
 	}
 
