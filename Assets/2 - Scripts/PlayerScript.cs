@@ -10,9 +10,12 @@ public class PlayerScript : MonoBehaviour {
 	
 	public GameObject playerParent;
 	public GameObject shootEffectPrefab;
+	public GameObject landingEffectPrefab;
+	public GameObject wallEffectPrefab;
 	public float jumpSpeed = 10f;
 	public float alwaysLeftSpeed = 3f;
 	public float alwaysRightSpeed = 3f;
+	public float throwSpeed = 1.5f;
 	public float fallSpeed = 20f;
 	public float stunTime = 1f;
 	public float wallAdjustment;
@@ -56,6 +59,10 @@ public class PlayerScript : MonoBehaviour {
 		GetPreviousPositionOfParent();
 		StartCoroutine(target.gameObject.GetComponent<GroundScript>().LandingEffect());
 		GameObject.Find("_ScoreManager").GetComponent<ScoreManagerScript>().AddScore();
+
+		GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>().PlayCoinSound();
+		GameObject landingEffect = Instantiate(landingEffectPrefab,transform.position, Quaternion.identity);
+		Destroy(landingEffect,0.1f);
 	}
 
 	IEnumerator OnCollisionExit2D(Collision2D target){
@@ -73,7 +80,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	float ParentVelocity(){
-		return (transform.parent.transform.position.x - previousPosXParent) / Time.deltaTime;
+		return (transform.parent.transform.position.x - previousPosXParent) * throwSpeed / Time.deltaTime;
 	}
 
 	void BounceAtWall(){
@@ -83,11 +90,13 @@ public class PlayerScript : MonoBehaviour {
 		if(transformX < -screenWidth){
 			rigidBody2DComponent.position = new Vector2(-screenWidth,rigidBody2DComponent.position.y);
 			rigidBody2DComponent.velocity = new Vector2(-rigidBody2DComponent.velocity.x,rigidBody2DComponent.velocity.y);
+			PlayWallBounceEffect();
 		}
 
 		if(transformX >= screenWidth){
 			rigidBody2DComponent.position = new Vector2(screenWidth,rigidBody2DComponent.position.y);
 			rigidBody2DComponent.velocity = new Vector2(-rigidBody2DComponent.velocity.x,rigidBody2DComponent.velocity.y);
+			PlayWallBounceEffect();
 		}
 	}
 
@@ -96,22 +105,22 @@ public class PlayerScript : MonoBehaviour {
 			if(currentPlayerState == PlayerState.Jumping){
 				StartCoroutine(Fall());
 			}
-			else{
+			else if(currentPlayerState == PlayerState.Standing){
 				Jump();
 			}
 		}
 	}
 
 	void Jump(){
+		GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>().PlayJumpSound();
 		boxCollider2D.enabled = false;
 		currentPlayerState = PlayerState.Jumping;
-
+	
 		if(standingGroundType == GroundScript.GroundType.JumpHigh){
-			rigidBody2DComponent.velocity = new Vector2(ParentVelocity(),jumpSpeed * 1.27f);
+			rigidBody2DComponent.velocity = new Vector2(ParentVelocity(),jumpSpeed * 1.08f);
 		}else{
 			rigidBody2DComponent.velocity = new Vector2(ParentVelocity(),jumpSpeed);
 		}
-
 		transform.SetParent(playerParent.transform);
 	}
 
@@ -126,6 +135,13 @@ public class PlayerScript : MonoBehaviour {
 	void StopPlayer(){
 		rigidBody2DComponent.isKinematic = true;
 		rigidBody2DComponent.velocity = new Vector2(0,0);
+	}
+
+	void PlayWallBounceEffect(){
+		if(currentPlayerState == PlayerState.Jumping){
+			GameObject wallEffect = Instantiate(wallEffectPrefab,transform.position, Quaternion.identity);
+			Destroy(wallEffect,0.2f);
+		}
 	}
 
 	IEnumerator Fall(){

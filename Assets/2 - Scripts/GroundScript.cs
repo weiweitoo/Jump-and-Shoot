@@ -36,11 +36,16 @@ public class GroundScript : MonoBehaviour {
 		angle += velocity / 100f;
 	}
 
-	public void SetGround(float minDistanceFromScreen, float maxDistanceFromScreen, float velocity, GroundType groundType){
+	public void SetGround(Vector2 scale,float minDistanceFromScreen, float maxDistanceFromScreen, float velocity, GroundType groundType){
+		this.transform.localScale = scale;
 		this.minDistanceFromScreen = minDistanceFromScreen;
 		this.maxDistanceFromScreen = maxDistanceFromScreen;
 		this.velocity = velocity;
 		this.groundType = groundType;
+	}
+
+	public void SetColor(byte red,byte green,byte blue){
+		this.transform.gameObject.GetComponent<SpriteRenderer>().color = new Color32(red,green,blue,255);
 	}
 
 	public IEnumerator LandingEffect(){

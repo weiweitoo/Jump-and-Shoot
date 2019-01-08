@@ -81,7 +81,7 @@ MonoBehaviour:
   minDistanceFromScreen: 1
   maxDistanceFromScreen: 1
   wallAdjustment: 0.5
-  shakeEffect: 0.4
+  shakeEffect: 0.5
   groundType: 3
   velocity: 800
   distance: 2
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 946cde9ef35132b47926fdfe68cd8943, type: 3}
-  m_Color: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
