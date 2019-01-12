@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: daf2c6ef1ba7e2040843607a3f4aea77
+labels:
+- usfx
+- imphenzia
+- kitchen
+- tap
+- drain
+- water
+- mono
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

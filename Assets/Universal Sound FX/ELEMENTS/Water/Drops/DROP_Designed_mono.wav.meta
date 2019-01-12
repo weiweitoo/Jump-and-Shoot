@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: d86fa129028c5bb4f83f1e6086051959
+labels:
+- usfx
+- imphenzia
+- drop
+- mono
+- water
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

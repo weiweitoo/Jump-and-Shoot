@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: 4863a7ce95e5d54479acaef79cb5aecb
+labels:
+- usfx
+- imphenzia
+- music effect
+- fanfare
+- gingle
+- success
+- fail
+- tune
+- melody
+- stereo
+- chip
+- sid
+- arp
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

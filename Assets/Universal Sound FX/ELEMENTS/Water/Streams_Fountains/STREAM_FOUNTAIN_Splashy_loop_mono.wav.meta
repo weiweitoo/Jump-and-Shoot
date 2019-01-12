@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 53ac873619f856d41a6fbb8f2a9f7618
+labels:
+- usfx
+- imphenzia
+- water
+- fountain
+- stream
+- loop
+- mono
+- running
+- river
+- splash
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

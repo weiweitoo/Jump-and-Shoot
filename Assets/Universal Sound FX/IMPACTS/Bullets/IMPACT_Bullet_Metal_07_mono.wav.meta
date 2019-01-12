@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 2b0f5fe00792ca14fa9cf1601fc799ce
+labels:
+- usfx
+- imphenzia
+- impact
+- bullet
+- hit
+- weapon
+- metal
+- mono
+- projectile
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

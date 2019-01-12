@@ -12,10 +12,16 @@ public class GameManagerScript : MonoBehaviour {
 	public GameObject gameOverPanel;
 	public GameObject menuPanel;
 	public GameObject player;
-
+	public GameObject groundHolder;
+	public GameObject newGround;
+	[ReadOnly] GroundScript newGroundScript;
+	AudioManagerScript audioManager;
+	AudioSource backgroundMusic;
 	void Awake(){
 		Time.timeScale = 1f;
 		gameState = GameState.Menu;
+		audioManager = GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>();
+		backgroundMusic = GameObject.Find("_BackgroundMusic").GetComponent<AudioSource>();
 	}
 
 	void Update(){
@@ -33,11 +39,38 @@ public class GameManagerScript : MonoBehaviour {
 		yield break;
 	}
 
+	public void Dead(){
+		StartCoroutine(DeadCoroutine());
+	}
+
 	public void GameOver(){
 		StartCoroutine(GameOverCoroutine());
 	}
 
+	public void Revive(){
+		audioManager.StopDeadSound();
+		backgroundMusic.Play();
+		Time.timeScale = 1f;
+		newGround = groundHolder.transform.GetChild(0).gameObject;
+		newGroundScript = newGround.GetComponent<GroundScript>();
+		newGroundScript.velocity = 0;
+
+		player.transform.position = new Vector3(newGround.transform.position.x,newGround.transform.position.y+1,newGround.transform.position.z);
+		player.GetComponent<PlayerScript>().RevivePlayer();
+	}
+
+	IEnumerator DeadCoroutine(){
+		audioManager.PlayDeadSound();
+		backgroundMusic.Pause();
+		Time.timeScale = 0.1f;
+		yield return new WaitForSecondsRealtime(0.5f);
+		gameOverPanel.SetActive(true);
+		GameObject.Find("_ReviveManager").GetComponent<MyReviveManagerScript>().StartCountingGameOver();
+	}
+
 	IEnumerator GameOverCoroutine(){
+		audioManager.PlayDeadSound();
+		backgroundMusic.Pause();
 		Time.timeScale = 0.1f;
 		yield return new WaitForSecondsRealtime(0.5f);
 		gameOverPanel.SetActive(true);

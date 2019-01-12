@@ -128,13 +128,22 @@ public class PlayerScript : MonoBehaviour {
 		if(isDead == false && Camera.main.transform.position.y - transform.position.y > 10){
 			isDead = true;
 			StopPlayer();
-			GameObject.Find("_GameManager").GetComponent<GameManagerScript>().GameOver();
+			GameObject.Find("_GameManager").GetComponent<GameManagerScript>().Dead();
 		}
 	}
 
 	void StopPlayer(){
 		rigidBody2DComponent.isKinematic = true;
 		rigidBody2DComponent.velocity = new Vector2(0,0);
+	}
+
+	public void RevivePlayer(){
+		ContinuePlayer();
+		isDead = false;
+	}
+
+	void ContinuePlayer(){
+		rigidBody2DComponent.isKinematic = false;
 	}
 
 	void PlayWallBounceEffect(){

@@ -76,10 +76,10 @@ public class GroundManagerScript : MonoBehaviour {
 			groundWidth -= widthDifference;
 			minVelocity += velocityDifference;
 			maxVelocity += velocityDifference;
-			Debug.Log(groundIndex);
-			Debug.Log(difficultyLevel);
-			Debug.Log(groundWidth);
-			Debug.Log("____________");
+			// Debug.Log(groundIndex);
+			// Debug.Log(difficultyLevel);
+			// Debug.Log(groundWidth);
+			// Debug.Log("____________");
 		}
 	}
 

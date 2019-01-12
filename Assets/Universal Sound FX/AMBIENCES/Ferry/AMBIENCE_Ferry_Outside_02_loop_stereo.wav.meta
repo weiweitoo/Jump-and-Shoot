@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 2e51a4535d12e1340a2e77e3dee2ad21
+labels:
+- usfx
+- imphenzia
+- ambience
+- ferry
+- hum
+- loop
+- stereo
+- boat
+- ship
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

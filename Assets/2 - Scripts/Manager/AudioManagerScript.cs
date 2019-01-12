@@ -6,17 +6,28 @@ public class AudioManagerScript : MonoBehaviour {
 
 	public AudioClip JumpSound;
 	public AudioClip CoinSound;
+	public List<AudioClip> DeadSoundList;
 	AudioSource audioSourceComponent;
+	AudioClip DeadSound;
 
 	void Awake(){
 		audioSourceComponent = GetComponent<AudioSource>();
 	}
 
 	public void PlayJumpSound(){
-		audioSourceComponent.PlayOneShot(JumpSound,1f);
+		audioSourceComponent.PlayOneShot(JumpSound,0.7f);
 	}
 
 	public void PlayCoinSound(){
 		audioSourceComponent.PlayOneShot(CoinSound,1f);
+	}
+
+	public void PlayDeadSound(){
+		DeadSound = DeadSoundList[Random.Range(0,DeadSoundList.Count)];
+		audioSourceComponent.PlayOneShot(DeadSound,1f);
+	}
+
+	public void StopDeadSound(){
+		audioSourceComponent.Stop();
 	}
 }

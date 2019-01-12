@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: e975e8f55f44d9d49af81e1287e47f0a
+labels:
+- usfx
+- imphenzia
+- cartoon
+- boing
+- mono
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 1
+    sampleRateSetting: 0
+    sampleRateOverride: 0
+    compressionFormat: 0
+    quality: 0
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
