@@ -48,6 +48,14 @@ public class PlayerStateManagerScript : MonoBehaviour {
 		PlayerPrefs.SetInt("BestScore",newBestScore);
 	}
 
+	/* Best Score Getter Setter*/
+	public int GetTotalScore(){
+		return PlayerPrefs.GetInt("TotalScore",0);
+	}
+	public void SetTotalScore(int newTotalScore){
+		PlayerPrefs.SetInt("TotalScore",newTotalScore);
+	}
+
 	/* Feather Falling Getter Setter */
 	public int GetFeatherFalling(){
 		return PlayerPrefs.GetInt("Upgrade_FeatherFalling",0);

@@ -52,5 +52,9 @@
         "ProjectSettings/":true,
         "temp/":true,
         "Temp/":true
+    },
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }

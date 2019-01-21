@@ -11,38 +11,49 @@ public class MyReviveManagerScript : MonoBehaviour {
 	public TextMeshPro counterText;
 
 	public int counter = 10;
-
+	public Coroutine countTimerCoroutine;
 	public void ReviveWithAds(){
-		Debug.Log("Revive with ads");
-		Revive();
+		StopCoroutine(countTimerCoroutine);
+		GameObject.Find("_AudioManager").gameObject.GetComponent<AudioManagerScript>().StopDeadSound();
+		GameObject.Find("UnityAds").gameObject.GetComponent<UnityAdsPlacementScript>().ShowAd();
 	}
 	public void ReviveWithGold(){
-		Debug.Log("Revive with gold");
+		StopCoroutine(countTimerCoroutine);
 		Revive();
 	}
 	
-	void Revive(){
+	public void Revive(){
 		gameOverPanel.SetActive(false);
 		// Switch to finish game page, so that wont show again
 		revivePage.SetActive(false);
 		finishGamePage.SetActive(true);
+		GameObject.Find("_AudioManager").gameObject.GetComponent<AudioManagerScript>().StopDeadSound();
 		GameObject.Find("_GameManager").GetComponent<GameManagerScript>().Revive();
 	}
 	public void StartCountingGameOver(){
-		StartCoroutine(CountTimerCoroutine());
+		countTimerCoroutine = StartCoroutine(CountTimerCoroutine());
+	}
+
+	void GameOverScreen(){
+		revivePage.SetActive(false);
+		finishGamePage.SetActive(true);
+		GameObject.Find("_GameManager").GetComponent<GameManagerScript>().GameOver();
 	}
 
 	IEnumerator CountTimerCoroutine(){
 		counterText.text = counter.ToString();
+		// If dead before then ignore the 5 sec
+		if(GameObject.Find("_GameManager").GetComponent<GameManagerScript>().lost == true){
+			GameOverScreen();
+		}
+
 		while(true){
-			yield return new WaitForSecondsRealtime(1);
-			counter -= 1;
-			counterText.text = counter.ToString();
-			Debug.Log(counter);
-			if(counter < 0){
-				GameObject.Find("_GameManager").GetComponent<GameManagerScript>().GameOver();
+			yield return new WaitForSecondsRealtime(1f);
+			if(--counter < 0){
+				GameOverScreen();
 				yield break;
 			}
+			counterText.text = counter.ToString();
 		}
 	}
 }

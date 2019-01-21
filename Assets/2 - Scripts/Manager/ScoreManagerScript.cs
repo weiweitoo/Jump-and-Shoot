@@ -5,6 +5,8 @@ using TMPro;
 
 public class ScoreManagerScript : MonoBehaviour {
 	public int currentScore = 0;
+	public int totalScore = 0;
+	public TextMeshPro totalScoreText;
 	public TextMeshPro currentScoreText;
 	public TextMeshPro bestScoreText;
 	public TextMeshPro best;
@@ -12,10 +14,21 @@ public class ScoreManagerScript : MonoBehaviour {
 
 	void Start () {
 		bestScore = PlayerStateManagerScript.instance.GetBestScore();
+		totalScore = PlayerStateManagerScript.instance.GetTotalScore();
 		bestScoreText.text = bestScore.ToString();
 		currentScoreText.text = currentScore.ToString();
 	}
-	
+
+	public void UpdateTotalScore(){
+		totalScoreText.text = totalScore.ToString() + " Gold Left";
+	}
+
+	public void SaveScore(){
+		totalScore += currentScore;
+		Debug.Log("Add " + currentScore);
+		PlayerStateManagerScript.instance.SetTotalScore(totalScore);
+	}
+
 	public void AddScore(){
 		currentScore++;
 		currentScoreText.text = currentScore.ToString();

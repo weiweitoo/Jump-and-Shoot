@@ -17,7 +17,9 @@ public class GameManagerScript : MonoBehaviour {
 	[ReadOnly] GroundScript newGroundScript;
 	AudioManagerScript audioManager;
 	AudioSource backgroundMusic;
+	public bool lost;
 	void Awake(){
+		lost = false;
 		Time.timeScale = 1f;
 		gameState = GameState.Menu;
 		audioManager = GameObject.Find("_AudioManager").GetComponent<AudioManagerScript>();
@@ -44,7 +46,7 @@ public class GameManagerScript : MonoBehaviour {
 	}
 
 	public void GameOver(){
-		StartCoroutine(GameOverCoroutine());
+		StartCoroutine(GameOverScreenCoroutine());
 	}
 
 	public void Revive(){
@@ -63,15 +65,17 @@ public class GameManagerScript : MonoBehaviour {
 		audioManager.PlayDeadSound();
 		backgroundMusic.Pause();
 		Time.timeScale = 0.1f;
+		GameObject.Find("_ScoreManager").GetComponent<ScoreManagerScript>().UpdateTotalScore();
 		yield return new WaitForSecondsRealtime(0.5f);
 		gameOverPanel.SetActive(true);
 		GameObject.Find("_ReviveManager").GetComponent<MyReviveManagerScript>().StartCountingGameOver();
+		lost = true;
 	}
 
-	IEnumerator GameOverCoroutine(){
-		audioManager.PlayDeadSound();
-		backgroundMusic.Pause();
-		Time.timeScale = 0.1f;
+	IEnumerator GameOverScreenCoroutine(){
+		if(lost == true){
+			GameObject.Find("_ScoreManager").GetComponent<ScoreManagerScript>().SaveScore();
+		}
 		yield return new WaitForSecondsRealtime(0.5f);
 		gameOverPanel.SetActive(true);
 		GameObject.Find("_ScoreManager").GetComponent<ScoreManagerScript>().ChangeColorToWhite();
