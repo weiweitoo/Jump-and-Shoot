@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be599574f44bbc44be52a92fffb91ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDistanceFromScreen: 1
-  maxDistanceFromScreen: 1
+  minDistanceFromScreen: 0
+  maxDistanceFromScreen: 0
   wallAdjustment: 0.5
   shakeEffect: 0.5
   groundType: 3

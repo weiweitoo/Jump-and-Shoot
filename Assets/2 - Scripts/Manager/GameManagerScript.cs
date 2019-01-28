@@ -35,7 +35,7 @@ public class GameManagerScript : MonoBehaviour {
 	IEnumerator StartGame(){
 		yield return new WaitForSeconds(0.2f);
 		menuPanel.GetComponent<Animator>().SetBool("InMenu",false);
-		player.GetComponent<Animator>().SetBool("PlayerActive",true);
+		// player.GetComponent<Animator>().SetBool("PlayerActive",true);
 		GameManagerScript.gameState = GameState.Playing;
 
 		yield break;

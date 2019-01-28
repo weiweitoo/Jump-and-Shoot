@@ -15,11 +15,11 @@ public class AudioManagerScript : MonoBehaviour {
 	}
 
 	public void PlayJumpSound(){
-		audioSourceComponent.PlayOneShot(JumpSound,0.7f);
+		audioSourceComponent.PlayOneShot(JumpSound,1f);
 	}
 
 	public void PlayCoinSound(){
-		audioSourceComponent.PlayOneShot(CoinSound,1f);
+		audioSourceComponent.PlayOneShot(CoinSound,1.1f);
 	}
 
 	public void PlayDeadSound(){

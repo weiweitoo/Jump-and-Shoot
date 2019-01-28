@@ -24,9 +24,18 @@ public class UnityAdsPlacementScript : MonoBehaviour {
     }
 
     void AdFinished (ShowResult result) {
-        if (result == ShowResult.Finished) {
-            // Reward the player
+        switch (result) {
+            case ShowResult.Finished:
             GameObject.Find("_ReviveManager").GetComponent<MyReviveManagerScript>().Revive();
+            break;
+
+            case ShowResult.Failed:
+            GameObject.Find("_ReviveManager").GetComponent<MyReviveManagerScript>().GameOverScreen();
+            break;
+
+            case ShowResult.Skipped:
+            GameObject.Find("_ReviveManager").GetComponent<MyReviveManagerScript>().GameOverScreen();
+            break;
         }
     }
 

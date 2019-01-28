@@ -619,7 +619,7 @@ RectTransform:
   m_GameObject: {fileID: 230189045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.99983215}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.35, y: 1.296875, z: 1}
   m_Children:
   - {fileID: 1582981122}
   - {fileID: 1241722019}
@@ -629,7 +629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.17648, y: -39.603}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &294199688
@@ -3772,7 +3772,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1554876202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.54387, z: 0}
+  m_LocalPosition: {x: 0, y: -0.513607, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 96478587}
@@ -3794,7 +3794,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -3845,8 +3845,8 @@ MonoBehaviour:
   alwaysLeftSpeed: 3
   alwaysRightSpeed: 3
   throwSpeed: 1.2
-  fallSpeed: 25
-  stunTime: 0.5
+  fallSpeed: 20
+  stunTime: 0.15
   wallAdjustment: 0.5
   isDead: 0
   previousPosXParent: 0
@@ -3854,6 +3854,8 @@ MonoBehaviour:
   hueValue: 0
   currentPlayerState: 0
   standingGroundType: 0
+  initialCollide: 0
+  allowSlowMotion: 0
 --- !u!96 &1554876208
 TrailRenderer:
   serializedVersion: 2
@@ -4142,7 +4144,7 @@ RectTransform:
   m_GameObject: {fileID: 1574464554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4137499, y: 1.375, z: 1}
   m_Children:
   - {fileID: 172725469}
   - {fileID: 1188967707}
@@ -4152,7 +4154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -3, y: -7}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1574464556
@@ -4643,12 +4645,7 @@ MonoBehaviour:
   JumpSound: {fileID: 8300000, guid: eb5dfc722409a4e209c12fec4d497a69, type: 3}
   CoinSound: {fileID: 8300000, guid: 76bac1118f33a4313bf55434f3de020f, type: 3}
   DeadSoundList:
-  - {fileID: 8300000, guid: 8e7998b9f71af6541be105ead2eae67f, type: 3}
-  - {fileID: 8300000, guid: 6f6b55ef6df340d458dc0347418e5465, type: 3}
-  - {fileID: 8300000, guid: 99a83756314585a419f8edfb4193ed95, type: 3}
-  - {fileID: 8300000, guid: 277e0373814a39a448935f131dde31df, type: 3}
-  - {fileID: 8300000, guid: ac8e66b203b7c064f9321a66f9d8a0e4, type: 3}
-  - {fileID: 8300000, guid: 27bb478d515105f4d950dbf1900dcec1, type: 3}
+  - {fileID: 8300000, guid: 5be170790b0896c4694c11f29eeef854, type: 3}
 --- !u!82 &1639535904
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4887,8 +4884,8 @@ MonoBehaviour:
   initialGround: 100
   groundWidth: 5
   groundHeight: 0.6
-  minVelocity: 1.8
-  maxVelocity: 2
+  minVelocity: 0.8
+  maxVelocity: 1.6
   groundIndex: 0
   difficultyGrowRate: 5
   widthGrow: 0.07

@@ -15,7 +15,6 @@ public class GroundManagerScript : MonoBehaviour {
 	public float maxVelocity = 2f;
 
 	[ReadOnly] public int groundIndex = 0;
-
 	[Header("Difficulty Setting")]
 	public int difficultyGrowRate = 10;
 	public float widthGrow = 0.05f;
@@ -62,7 +61,7 @@ public class GroundManagerScript : MonoBehaviour {
 			newScale = new Vector2(groundWidth,groundHeight);
 		}
 
-		obj.GetComponent<GroundScript>().SetGround(newScale,1,2,velocity,groundType);
+		obj.GetComponent<GroundScript>().SetGround(newScale,0,0,velocity,groundType);
 
 
 	}

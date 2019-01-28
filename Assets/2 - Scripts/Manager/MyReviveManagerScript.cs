@@ -34,7 +34,7 @@ public class MyReviveManagerScript : MonoBehaviour {
 		countTimerCoroutine = StartCoroutine(CountTimerCoroutine());
 	}
 
-	void GameOverScreen(){
+	public void GameOverScreen(){
 		revivePage.SetActive(false);
 		finishGamePage.SetActive(true);
 		GameObject.Find("_GameManager").GetComponent<GameManagerScript>().GameOver();
