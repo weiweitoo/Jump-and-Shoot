@@ -70,6 +70,4 @@ public class GroundScript : MonoBehaviour {
 
 		yield break;
 	}
-
-
 }
